@@ -31,8 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     "admin_interface",
     "colorfield",
+>>>>>>> f641b5852dcec5c085a65d0315ff505ae9375c64
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -40,6 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "api",
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f641b5852dcec5c085a65d0315ff505ae9375c64
 ]
 
 MIDDLEWARE = [
