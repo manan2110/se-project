@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User
+from .models import Product, Shop, User
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout, login
 from .choices import USER_TYPE_CHOICES
@@ -14,6 +14,13 @@ def home(request):
 
 def base(request):
     return render(request, "api/base.html", context={})
+
+def cats(request):
+    cats = Product.objects.all()
+    return render(request,"api/cats.html",context={"cats":cats})
+
+def sellers(request):
+    return render(request,"api/sellers.html",context={})
 
 
 def signup(request):
