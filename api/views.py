@@ -28,7 +28,7 @@ def signup(request):
             role = 3
         else:
             role = 4
-        user = User(
+        user = User.objects.create_user(
             email=email,
             password=password,
             first_name=fname,
