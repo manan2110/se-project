@@ -24,6 +24,9 @@ def cats(request):
 def sellers(request):
     return render(request,"api/sellers.html",context={})
 
+def products(request,pk):
+    product = Product.objects.get(id=pk) 
+    return render(request,"api/products.html",context={'product':product})
 
 # def signup(request):
 #     if request.method == "POST":
