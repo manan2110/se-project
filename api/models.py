@@ -8,19 +8,10 @@ from . import choices as user_constants
 
 
 class User(AbstractUser):
-    username = None  # remove username field, we will use email as unique identifier
-    email = models.EmailField(unique=True, null=True, db_index=True)
-    is_active = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now)
     user_type = models.PositiveSmallIntegerField(
-        choices=user_constants.USER_TYPE_CHOICES
+        choices=user_constants.USER_TYPE_CHOICES,null = True,blank = True
     )
-    phone = models.CharField(max_length=11, blank=True)
-    REQUIRED_FIELDS = []
-    USERNAME_FIELD = "email"
-
-    objects = UserManager()
+    phone = models.CharField(max_length=15, blank=True)
 
 
 class Shop(models.Model):
