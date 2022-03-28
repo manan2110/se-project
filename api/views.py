@@ -13,6 +13,26 @@ def home(request):
     else:
         return redirect("/login")
 
+def get_shop_products(request,pk):
+    products = Product.objects.filter(shop=pk)
+    context = {
+        'products':products
+    }
+    return render(request,"api/multipleProducts.html",context)
+
+def get_all_shops(request):
+    shops = Shop.objects.all()
+    context = {
+        'shops':shops
+    }
+    return render(request,"api/shopList.html",context)
+
+def product_details(request,pk):
+    product = Product.objects.get(id=pk)
+    context = {
+        'product':product,
+    }  
+    return render(request,"api/products.html",context)
 
 def base(request):
     return render(request, "api/base.html", context={})
@@ -23,36 +43,6 @@ def cats(request):
 
 def sellers(request):
     return render(request,"api/sellers.html",context={})
-
-def products(request,pk):
-    product = Product.objects.get(id=pk) 
-    return render(request,"api/products.html",context={'product':product})
-
-# def signup(request):
-#     if request.method == "POST":
-#         fname = request.POST.get("fname")
-#         lname = request.POST.get("lname")
-#         email = request.POST.get("email")
-#         password = request.POST.get("password")
-#         phone = request.POST.get("phone")
-#         role = request.POST.get("role")
-#         if role == "buyer":
-#             role = 3
-#         else:
-#             role = 4
-#         user = User.objects.create_user(
-#             email=email,
-#             password=password,
-#             first_name=fname,
-#             last_name=lname,
-#             user_type=role,
-#             phone=phone,
-#         )
-#         user.save()
-#         return redirect("/login")
-#     return render(request, "api/signup.html", context={})
-
-
 
 def signup(request):
         form = CreateUserForm()
@@ -74,37 +64,17 @@ def logoutUser(request):
     return redirect('login')
 
 
-# def view_login(request):
-#     if request.method == "POST":
-#         print("login")
-#         email = request.POST.get("email")
-#         password = request.POST.get("password")
-#         # check if user has entered correct credentials
-#         user = authenticate(email=email, password=password)
-#         if user is not None:
-#             login(request, user)
-#             print("hogya")
-#             # A backend authenticated the credentials
-#             return redirect("/")
-#         else:
-#             return render(request, "api/login.html")
-#         # No backend authenticated the credentials
-#     return render(request, "api/login.html")
-
 def view_login(request):
     if request.user.is_authenticated:
-        print("Hi1")
         return redirect("/")
     else:
         if request.method == "POST":
-            print("Hi2")
             username = request.POST.get("email")
             password = request.POST.get("password")
 
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                print("Hi3")
                 return redirect("/")
             else:
                 messages.info(request, "Username OR password is incorrect")
