@@ -11,7 +11,30 @@ def home(request):
     if request.user.is_authenticated:
         return render(request, "api/home.html", context={})
     else:
-        return redirect("/login")
+        return redirect("login")
+
+
+def buyer_dashboard(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    else:
+        user = request.user
+        subscriptions = Subscription.objects.filter(user=user.id)
+        shops = Shop.objects.all()
+        context = {
+            'subscriptions':subscriptions,
+            'user':user,
+            'shops':shops
+            
+        }
+        return render(request,"api/buyerDashboard.html",context)
+
+def add_subscription(request):
+    
+    context = {
+    }
+    return render(request,"api/addSubscription.html",context)   
+
 
 def get_shop_products(request,pk):
     products = Product.objects.filter(shop=pk)

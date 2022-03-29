@@ -11,6 +11,8 @@ urlpatterns = [
     path("logout/", views.logoutUser, name="logout"),
     path("cats/", views.cats, name="cats"),
     path("sellers/", views.sellers, name="sellers"),
-     path("products/<str:pk>", views.product_details,name="product_details"),
-     path("shop-products/<str:pk>", views.get_shop_products,name="shop_products"),
+    path("products/<str:pk>", views.product_details,name="product_details"),
+    path("shop-products/<str:pk>", views.get_shop_products,name="shop_products"),
+    path("buyer-dashboard", views.buyer_dashboard,name="buyer_dashboard"),
+    path("add-subscription", views.add_subscription,name="add_subscription"),
 ]

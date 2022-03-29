@@ -1,0 +1,913 @@
+{% load static %}
+{% include 'api/navbar.html' %}
+
+<br>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- <h2 style=" color: rgb(23, 60, 131);position: absolute; left: 20px;">My Subscription's</h2> -->
+    <a href="{% url 'add_subscription' %}"  rel="noopener noreferrer"
+      style="position: absolute; right: 20px;" type="button" class="btn btn-info  btn-lg">Add Subscription</a>
+    <br>
+    <br>
+
+  </div>
+  <hr>
+
+
+  <div class="row">
+
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Main PCB</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Main PCB</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Keypad PCB</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Keypad PCB</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Power PCB</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Power PCB</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Sensor PCB</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Sensor PCB</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">LED PCB</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add LED PCB</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+  <div class="row">
+    <h2 style=" color: rgb(23, 60, 131);position: absolute; left: 20px;">Device Documents</h2>
+
+    <br>
+
+  </div>
+  <hr>
+
+  <div class="row">
+
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Device Assembly Traveller Document</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer" class="btn btn-light text-center">Add
+            Document</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Calibration Report</div>
+
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Report</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Pre Dispatch Inspection Record</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Record</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">Final Inspection Record</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer"
+            class="btn btn-light text-center">Add Record</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md mb-5">
+      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <br>
+        <div class="card-header">QA-QC Performance Record</div>
+        <div class="card-body">
+          <a href=""  rel="noopener noreferrer" class="btn btn-light text-center">Add
+            Record</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <h1 style=" text-align: center; color: rgb(23, 60, 131); ">Device Log's</h1>
+  <hr>
+  <br> -->
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">My Subscription's</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 46px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Date & Time</th>
+              <th scope="col">Edit Device</th>
+              <th scope="col">Activity Sheet</th>
+              <th scope="col">View Device</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for device in Devices %}
+
+            <tr>
+              <td>{{device.DeviceId|default_if_none:"&nbsp;" }}</td>
+              <td>{{device.date|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="" >Edit</a></td>
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-success "
+                  href="" >View</a></td>
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="" >View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+
+
+
+
+
+  <h1 style=" text-align: center; color: rgb(23, 60, 131); ">Document Log's</h1>
+  <hr>
+  <br>
+
+
+
+
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Device Assembly Traveller
+        Document</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit TDoc</th>
+
+              <th scope="col">View TDoc</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for document in Tdocs %}
+
+            <tr>
+              <td>{{document.device|default_if_none:"&nbsp;" }}</td>
+              <td>{{document.last_modified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="" target=" _blank">Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="" target=" _blank">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Calibration Report</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit Device</th>
+              <th scope="col">View Device</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for report in CalibrationReports %}
+
+            <tr>
+              <td>{{report.device|default_if_none:"&nbsp;" }}</td>
+              <td>{{report.last_modified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="" >Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="" >View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+  <hr>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Final Inspection Record</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit Record</th>
+              <th scope="col">View Record</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in FInsRecords %}
+
+            <tr>
+              <td>{{record.device|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.last_modified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="" >Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="" >View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">QA-QC Performance Record</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit QAQC</th>
+
+              <th scope="col">View QAQC</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in QAQCPerformancerecords %}
+
+            <tr>
+              <td>{{record.device|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.last_modified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="" >Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="" >View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Pre Dispatch Inspection Record
+      </h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 46px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">Device ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Date Of Dispatch</th>
+              <th scope="col">MFD</th>
+              <th scope="col">Customer Name</th>
+              <th scope="col">Firm</th>
+              <th scope="col">Edit</th>
+              <th scope="col">View</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in PreDispatchInspectionRecords %}
+
+            <tr>
+              <td>{{record.device|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.last_modified|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.date_of_dispatch|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.MFD|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.CustomerName|default_if_none:"&nbsp;" }}</td>
+              <td>{{record.Firm|default_if_none:"&nbsp;" }}</td>
+
+              <td><a class="btn btn-md btn-danger "
+                  href="">Edit</a></td>
+
+              <td><a class="btn btn-md btn-primary"
+                  href="">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 Devices</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h1 style=" text-align: center; color: rgb(23, 60, 131); ">PCB Log's</h1>
+  <hr>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Main PCB</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">PCB ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit PCB</th>
+              <th scope="col">View PCB</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for pcb in MainPcbs %}
+
+            <tr>
+              <td>{{pcb.Id|default_if_none:"&nbsp;" }}</td>
+              <td>{{pcb.lastModified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="">Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 PCB's</small>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Keypad PCB</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">PCB ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit PCB</th>
+              <th scope="col">View PCB</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for pcb in KeypadPcbs %}
+
+            <tr>
+              <td>{{pcb.Id|default_if_none:"&nbsp;" }}</td>
+              <td>{{pcb.lastModified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="">Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 PCB's</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <br>
+  <hr>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card text-white bg-secondary" style=" margin-left: 362px; margin-right: 362px;">
+
+    <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 18px;">Power PCB</h2>
+    <br>
+    <br>
+    <a href=""  rel="noopener noreferrer"
+      style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+      class="btn btn-light ">View All</a>
+
+
+    <div class="card-body">
+      <table class="table table-hover table-dark ">
+        <thead>
+          <tr>
+            <th scope="col">PCB ID</th>
+            <th scope="col">Last Modified</th>
+            <th scope="col">Edit PCB</th>
+            <th scope="col">View PCB</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for pcb in PowerPcbs %}
+
+          <tr>
+            <td>{{pcb.Id|default_if_none:"&nbsp;" }}</td>
+            <td>{{pcb.lastModified|default_if_none:"&nbsp;" }}</td>
+            <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                href="">Edit</a></td>
+
+
+            <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                href="">View</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+      <div class="card-footer bg-dark">
+        <small class="text-white ">Last 5 PCB's</small>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+  <hr>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card-deck">
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">Sensor PCB</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">PCB ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit PCB</th>
+              <th scope="col">View PCB</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for pcb in SensorPcbs %}
+
+            <tr>
+              <td>{{pcb.Id|default_if_none:"&nbsp;" }}</td>
+              <td>{{pcb.lastModified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="">Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 PCB's</small>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card text-white bg-secondary">
+
+      <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">LED PCB</h2>
+      <a href=""  rel="noopener noreferrer"
+        style="position: absolute; right: 20px; margin-top: 15px; margin-right : 20px " type="button"
+        class="btn btn-light ">View All</a>
+      <br>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover table-dark ">
+          <thead>
+            <tr>
+              <th scope="col">PCB ID</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Edit PCB</th>
+              <th scope="col">View PCB</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for pcb in LedPcbs %}
+
+            <tr>
+              <td>{{pcb.Id|default_if_none:"&nbsp;" }}</td>
+              <td>{{pcb.lastModified|default_if_none:"&nbsp;" }}</td>
+              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+                  href="">Edit</a></td>
+
+
+              <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
+                  href="">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        <div class="card-footer bg-dark">
+          <small class="text-white ">Last 5 PCB's</small>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <hr>
+  <br>
+
