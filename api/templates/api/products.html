@@ -18,6 +18,10 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
   </head>
 
@@ -35,10 +39,54 @@
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">{{ product.name}}</h3>
-						<h5 class="price">Seller details: <span>{{product.shop.name}}</span></h5>
+						<h5 class="price">Shop: <span>{{product.shop.name}}</span></h5>
 						<p class="product-description">{{product.description}}</p>
-                        <h4 class="price">Price: <span>{{product.price}}</span></h4>
-						<div class="action">
+            <h4 class="price">Price: <span>{{product.price}}</span></h4>
+<div class = "subs-buttons">
+    <!-- Radio buttons for Frequency -->
+            <div class="frequency">
+            <input type="radio" id="weekly" name="frequency" value="weekly">
+            <label for="weekly">Weekly</label>
+            <input type="radio" id="monthly" name="frequency" value="monthly">
+            <label for="monthly">Monthly</label>
+            </div><br>
+
+
+  <!-- Multiple Days Select Button -->
+      <div class="form-check list-inline list-group-horizontal btn-group" role="group" data-toggle="buttons"> 
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">MON
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">TUE
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">WED
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">THU
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">FRI
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">SAT
+  </label>
+  <label class="btn btn-light">
+    <input type="checkbox" class="form-check list-group-item">SUN
+  </label>
+</div> 
+<br> <br>
+<!-- Quantity Counter -->
+<div class="counter">
+  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+  <input type="text" value="0">
+  <span class="up"  onClick='increaseCount(event, this)'>+</span>
+</div>
+<br>
+</div>       
+<!-- subscribe button -->
+            <div class="action">
 							<button class="subscribe btn btn-default" type="button">Subscribe</button>
 						</div>
 					</div>
@@ -80,20 +128,6 @@ img {
       -ms-flex-positive: 1;
           flex-grow: 1; }
 
-.preview-thumbnail.nav-tabs {
-  border: none;
-  margin-top: 15px; }
-  .preview-thumbnail.nav-tabs li {
-    width: 18%;
-    margin-right: 2.5%; }
-    .preview-thumbnail.nav-tabs li img {
-      max-width: 100%;
-      display: block; }
-    .preview-thumbnail.nav-tabs li a {
-      padding: 0;
-      margin: 0; }
-    .preview-thumbnail.nav-tabs li:last-of-type {
-      margin-right: 0; }
 
 .tab-content {
   overflow: hidden; }
@@ -162,7 +196,7 @@ img {
   .color:first-of-type {
     margin-left: 20px; }
 
-.subscribe, .like {
+.subscribe{
   background: #ff9f1a;
   padding: 1.2em 1.5em;
   border: none;
@@ -171,7 +205,7 @@ img {
   color: #fff;
   -webkit-transition: background .3s ease;
           transition: background .3s ease; }
-  .subscribe:hover, .like:hover {
+  .subscribe:hover{
     background: #b36800;
     color: #fff; }
 
@@ -204,6 +238,74 @@ img {
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1); } }
+            .list-group-horizontal .list-group-item {
+  display: inline-block; 
+}
+
+
+.list-group-horizontal .list-group-item:focus {
+  background-color: #41AADA !important; 
+  color:#fff;
+  display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+  margin-bottom: 0;
+  margin-left:-4px;
+  margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+  border-top-right-radius:0;
+  border-bottom-left-radius:4px;  
+}
+.list-group-horizontal .list-group-item:last-child {
+  border-top-right-radius:4px;
+  border-bottom-left-radius:0;   
+}
+.form-check label {
+  padding:.75rem 1.25rem;
+  margin-bottom:0;
+}
+.form-check label input[type="checkbox"] {
+  opacity:0;
+}
+
+
+.frequency {
+  font-size: 20px;
+}
+
+.subs-buttons {
+  margin: 5px;
+}
+/* Counter */
+
+
+.counter {
+    width: 150px;
+    border-style: ridge;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.counter input {
+    width: 50px;
+    border: 0;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background: #f9fafc;
+    color: rgb(0, 0, 0);
+    appearance: none;
+    outline: 0;
+}
+.counter span {
+    display: block;
+    font-size: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #000000;
+    user-select: none;
+}
 
 @keyframes opacity {
   0% {
@@ -215,6 +317,28 @@ img {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
+
+           
 /*# sourceMappingURL=style.css.map */
 </style>
+
+
+<script type="text/javascript">
+  function increaseCount(a, b) {
+    var input = b.previousElementSibling;
+    var value = parseInt(input.value, 10); 
+    value = isNaN(value)? 0 : value;
+    value ++;
+    input.value = value;
+  }
+  function decreaseCount(a, b) {
+    var input = b.nextElementSibling;
+    var value = parseInt(input.value, 10); 
+    if (value > 0) {
+      value = isNaN(value)? 0 : value;
+      value --;
+      input.value = value;
+    }
+  }
+</script>
 {% endblock content %}
