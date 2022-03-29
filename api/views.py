@@ -41,14 +41,14 @@ def get_shop_products(request,pk):
     context = {
         'products':products
     }
-    return render(request,"api/multipleProducts.html",context)
+    return render(request,"api/allProducts.html",context)
 
 def get_all_shops(request):
     shops = Shop.objects.all()
     context = {
         'shops':shops
     }
-    return render(request,"api/shopList.html",context)
+    return render(request,"api/allShops.html",context)
 
 def product_details(request,pk):
     product = Product.objects.get(id=pk)
@@ -61,8 +61,8 @@ def base(request):
     return render(request, "api/base.html", context={})
 
 def cats(request):
-    cats = Product.objects.all()
-    return render(request,"api/cats.html",context={"cats":cats})
+    products = Product.objects.all()
+    return render(request,"api/cardList.html",context={"objects":products})
 
 def sellers(request):
     return render(request,"api/sellers.html",context={})

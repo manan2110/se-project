@@ -1,5 +1,7 @@
-{% load static %}
-{% include 'api/navbar.html' %}
+
+{% extends "api/base.html" %} 
+
+{% block content %}
 
 <br>
 
@@ -84,92 +86,13 @@
 
 
 
-<!-- 
-
-
-  <div class="row">
-    <h2 style=" color: rgb(23, 60, 131);position: absolute; left: 20px;">Device Documents</h2>
-
-    <br>
-
-  </div>
-  <hr>
-
-  <div class="row">
-
-    <div class="col-md mb-5">
-      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Device Assembly Traveller Document</div>
-        <div class="card-body">
-          <a href=""  rel="noopener noreferrer" class="btn btn-light text-center">Add
-            Document</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md mb-5">
-      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
-        <br>
-        <div class="card-header">Calibration Report</div>
-
-        <div class="card-body">
-          <a href=""  rel="noopener noreferrer"
-            class="btn btn-light text-center">Add Report</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md mb-5">
-      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <br>
-        <div class="card-header">Pre Dispatch Inspection Record</div>
-        <div class="card-body">
-          <a href=""  rel="noopener noreferrer"
-            class="btn btn-light text-center">Add Record</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md mb-5">
-      <div class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
-        <br>
-        <div class="card-header">Final Inspection Record</div>
-        <div class="card-body">
-          <a href=""  rel="noopener noreferrer"
-            class="btn btn-light text-center">Add Record</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md mb-5">
-      <div class="card text-center text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <br>
-        <div class="card-header">QA-QC Performance Record</div>
-        <div class="card-body">
-          <a href=""  rel="noopener noreferrer" class="btn btn-light text-center">Add
-            Record</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
   <!-- <h1 style=" text-align: center; color: rgb(23, 60, 131); ">Device Log's</h1>
   <hr>
   <br> -->
-  <div class="card-deck">
+<div class="card-deck">
     <div class="card text-white bg-secondary">
 
       <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">My Subscription's</h2>
@@ -222,7 +145,7 @@
 
 
 
-
+ {% endblock content %}
 
   <h1 style=" text-align: center; color: rgb(23, 60, 131); ">Document Log's</h1>
   <hr>
@@ -904,7 +827,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <br>

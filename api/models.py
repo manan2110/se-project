@@ -21,13 +21,14 @@ class Shop(models.Model):
     address = models.JSONField()
     contact = models.JSONField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.URLField(max_length=2084,null=True,blank=True)
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=512)
     price = models.FloatField()
-    image = models.URLField()
+    image = models.URLField(max_length=2084)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     category = models.CharField(max_length=255)
 

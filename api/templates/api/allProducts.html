@@ -37,15 +37,15 @@
     }
 </style>
 <div class="parent">
-    {% for cat in cats %}
+    {% for object in products %}
 
     <div class="card">
-        <a href="">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ektfbp-KGFoday2cOwUfXtp9w2qreX1iMw&usqp=CAU"
+        <a href="{% url 'product_details' object.id  %}">
+            <img src= {{ object.image }}
                 alt="Avatar" style="width:100%; height:auto;">
             <div class="container">
             </div>
-            <h5>{{cat}}</h5>
+            <h5>{{object.name}}</h5>
         </a>
     </div>
 

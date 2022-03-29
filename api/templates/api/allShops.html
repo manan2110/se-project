@@ -1,0 +1,60 @@
+
+{% extends "api/base.html" %} 
+
+{% block content %}
+
+<style>
+    .parent {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    .card {
+
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 13%;
+        height: 10%;
+        border-radius: 5px;
+        margin: 30px;
+        text-align: center;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: larger;
+    }
+</style>
+<div class="parent">
+    {% for object in shops %}
+
+    <div class="card">
+        <a href="{% url 'shop_products' object.id  %}">
+            <img src= {{ object.image }}
+                alt="Avatar" style="width:100%; height:auto;">
+            <div class="container">
+            </div>
+            <h5>{{object.name}}</h5>
+        </a>
+    </div>
+
+
+    </br>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock content %}
