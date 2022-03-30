@@ -32,7 +32,7 @@
 </head>
 
 <body>
-
+  
   <div class="container">
     <div class="card">
       <div class="container-fliud">
@@ -50,7 +50,9 @@
             <h4 class="price">Price: <span>{{product.price}}</span></h4>
             <div class="subs-buttons">
               <!-- Radio buttons for Frequency -->
-              <div class="frequency">
+            <form  method="post" >
+              {% csrf_token %}
+              <div class="frequency" action = "buyer_dashboard">
                 <input type="radio" id="weekly" name="frequency" value="weekly">
                 <label for="weekly">Weekly</label>
                 <input type="radio" id="monthly" name="frequency" value="monthly">
@@ -94,8 +96,9 @@
             </div>
             <!-- subscribe button -->
             <div class="action">
-              <button class="subscribe btn btn-default" type="button">Subscribe</button>
+              <button class="subscribe btn btn-default" type="submit">Subscribe</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
