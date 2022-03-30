@@ -34,8 +34,19 @@
         text-decoration: none;
         font-size: larger;
     }
+    form{
+        padding-top: 40px;
+        padding-left: 30px;
+    }
 </style>
 <div class="parent">
+    <form method="GET">
+        <p>Shop Name : {{filter.form.name}} Category: {{filter.form.category}} <button class="btn btn-primary" type="submit">Search</button></p>
+        
+    
+  </form>
+
+</div>
     {% for object in shops %}
 
     <div class="card">
