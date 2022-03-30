@@ -58,13 +58,13 @@ def product_details(request,pk):
         for key, value in request.POST.items():
             print(f'Key: {key}')
             print(f'Value: {value}') 
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            subscription = form.save()
-            messages.success(request, 'Subscription Added')
-            return redirect('buyer_dashboard')
-        else:
-            print(form.errors)   
+        # form = CreateUserForm(request.POST)
+        # if form.is_valid():
+        #     subscription = form.save()
+        #     messages.success(request, 'Subscription Added')
+        #     return redirect('buyer_dashboard')
+        # else:
+        #     print(form.errors)   
                      
     product = Product.objects.get(id=pk)
     context = {
