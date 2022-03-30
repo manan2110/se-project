@@ -22,6 +22,7 @@ class Shop(models.Model):
     contact = models.JSONField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.URLField(max_length=2084,null=True,blank=True)
+    location = models.CharField(max_length=128,null=True,blank = True)
 
 
 class Product(models.Model):
