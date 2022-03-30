@@ -77,7 +77,7 @@
     }
 
     .signin {
-      width: 80%;
+      width: 60%;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 30px;
@@ -91,15 +91,15 @@
 <div class="main">
 
 
-  <div class="signin" style="margin-left: 350px;">
+  <div class="signin" style="margin-left: 450px;">
     <form method="post">
       {% csrf_token %}
-      <label for="chk" style="margin-top: 120px;margin-left: 275px;">Sign in</label>
+      <label for="chk" style="margin-top: 120px;margin-left: 200px;">Sign in</label>
       <input type="email" name="email" placeholder="Email" required="" />
       <label for="chk" style="margin-top: 5px;"></label>
       <input type="password" name="password" placeholder="Password" required="" />
       <label for="chk" style="margin-top: 5px;"></label>
-      <button action="{% url 'login' %}" style="margin-left: 250px;">
+      <button action="{% url 'login' %}" style="margin-left: 180px;">
         <a _ngcontent-c7="" class="cd-prodcuts-order-btn mat-raised-button" mat-raised-button="" tabindex="0"
           aria-disabled="false"><span class="mat-button-wrapper">Sign in</span>
         </a>

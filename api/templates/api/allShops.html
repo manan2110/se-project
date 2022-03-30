@@ -41,7 +41,7 @@
 </style>
 <div class="parent">
     <form method="GET">
-        <p>Shop Name : {{filter.form.name}} Category : {{filter.form.category}} City : {{filter.form.location}}: <button class="btn btn-primary" type="submit">Search</button></p>
+        <p>Shop Name  :  {{filter.form.name__icontains}}   Category  :  {{filter.form.category__icontains}}   City  :  {{filter.form.location__icontains}} <button class="btn btn-primary" type="submit">Search</button></p>
         
     
   </form>
