@@ -52,36 +52,41 @@
               <!-- Radio buttons for Frequency -->
             <form  method="post" >
               {% csrf_token %}
-              <div class="frequency" action = "buyer_dashboard">
-                <input type="radio" id="weekly" name="frequency" value="weekly">
+              <div class="week_counter" action = "buyer_dashboard">
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+        
+                  <input type="text" value="0" name="week_counter">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>
+                <!-- <input type="radio" id="weekly" name="frequency" value="weekly">
                 <label for="weekly">Weekly</label>
                 <input type="radio" id="monthly" name="frequency" value="monthly">
-                <label for="monthly">Monthly</label>
+                <label for="monthly">Monthly</label> -->
               </div><br>
 
 
               <!-- Multiple Days Select Button -->
               <div class="multiple-day-select" role="group" data-toggle="buttons">
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="MON">MON
+                  <input type="checkbox" id="days" name="multiple-day-select" value="0">MON
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="TUE">TUE
+                  <input type="checkbox" id="days" name="multiple-day-select" value="1">TUE
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="WED">WED
+                  <input type="checkbox" id="days" name="multiple-day-select" value="2">WED
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="THU">THU
+                  <input type="checkbox" id="days" name="multiple-day-select" value="3">THU
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="FRI">FRI
+                  <input type="checkbox" id="days" name="multiple-day-select" value="4">FRI
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="SAT">SAT
+                  <input type="checkbox" id="days" name="multiple-day-select" value="5">SAT
                 </label>
                 <label class="btn btn-light">
-                  <input type="checkbox" id="days" name="multiple-day-select" value="SUN">SUN
+                  <input type="checkbox" id="days" name="multiple-day-select" value="6">SUN
                 </label>
               </div>
               <br> <br>
@@ -367,6 +372,34 @@
   }
 
   .counter span {
+    display: block;
+    font-size: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #000000;
+    user-select: none;
+  }
+  .week_counter {
+    width: 150px;
+    border-style: ridge;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .week_counter input {
+    width: 50px;
+    border: 0;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background: #f9fafc;
+    color: rgb(0, 0, 0);
+    appearance: none;
+    outline: 0;
+  }
+
+  .week_counter span {
     display: block;
     font-size: 25px;
     padding: 0 10px;
