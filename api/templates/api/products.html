@@ -86,7 +86,8 @@
               <!-- Quantity Counter -->
               <div class="counter">
                 <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                <input type="text" value="0">
+      
+                <input type="text" value="0" name="counter">
                 <span class="up" onClick='increaseCount(event, this)'>+</span>
               </div>
               <br>
@@ -156,7 +157,7 @@
   }
 
   .card {
-    margin-top: 100px;
+    margin-top: 50px;
     background: #eee;
     padding: 3em;
     line-height: 1.5em;
