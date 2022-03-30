@@ -58,6 +58,10 @@ def product_details(request,pk):
         for key, value in request.POST.items():
             print(f'Key: {key}')
             print(f'Value: {value}') 
+        number_of_weeks = request.POST.get('week_counter')
+        quantity = request.POST.get('quantity')
+        user = request.user
+        
         # form = CreateUserForm(request.POST)
         # if form.is_valid():
         #     subscription = form.save()

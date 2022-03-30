@@ -41,6 +41,8 @@ class Subscription(models.Model):
     price = models.FloatField(blank=True,null=True)
     time_period = models.JSONField(blank=True,null=True)
     quantity_list = models.JSONField(blank=True,null=True)
+    quantity = models.IntegerField(blank=True,null=True)
+    number_of_weeks = models.IntegerField(blank=True,null=True)
 
 
 class Order(models.Model):
