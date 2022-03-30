@@ -1,5 +1,4 @@
-
-{% extends "api/base.html" %} 
+{% extends "api/base.html" %}
 
 {% block content %}
 
@@ -40,9 +39,8 @@
     {% for object in shops %}
 
     <div class="card">
-        <a href="{% url 'shop_products' object.id  %}">
-            <img src= {{ object.image }}
-                alt="Avatar" style="width:100%; height:auto;">
+        <a href="{% url 'shop_products' object.id  %}" style="text-decoration: none; color: slategrey;">
+            <img src={{ object.image }} alt="Avatar" style="width:100%; height:auto;">
             <div class="container">
             </div>
             <h5>{{object.name}}</h5>

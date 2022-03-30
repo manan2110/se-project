@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2890,14 +2891,20 @@
           <div class="topnav-container ng-star-inserted">
             <div class="nav-brand" routerlink="" tabindex="0">
               <img alt="Country Delight Logo" style="width: 70px; height: 70px"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ektfbp-KGFoday2cOwUfXtp9w2qreX1iMw&usqp=CAU" />
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ektfbp-KGFoday2cOwUfXtp9w2qreX1iMw&usqp=CAU"
+                href="{% url 'home' %}" />
             </div>
             <div class="cd-topnav-left">
               <span class="cd-topnav-headers pd-left-18" fxhide.lt-md="" routerlink="/trialoffer"
                 routerlinkactive="active-link" tabindex="0">
-                Order Now </span><span class="cd-topnav-headers pd-left-18" fxhide.lt-md="" routerlink="/story"
+                <a href="{% url 'home' %}" style="text-decoration: None; color: #393939;">Home
+                </a></span>
+              <span class="cd-topnav-headers pd-left-18" fxhide.lt-md="" routerlink="/trialoffer"
                 routerlinkactive="active-link" tabindex="0">
-                Our Story
+                <a href="{% url 'all_shops' %}" style="text-decoration: None; color: #393939;">Order Now
+                </a></span><span class="cd-topnav-headers pd-left-18" fxhide.lt-md="" routerlinkactive="active-link"
+                tabindex="0">
+                <a href="{% url 'buyer_dashboard' %}" style="text-decoration: None; color: #393939;">Dashboard</a>
               </span>
             </div>
             <span class="nav-spacer"></span>
@@ -2955,12 +2962,12 @@
         </mat-toolbar>
         <!---->
       </app-topnav>
-
       {% block content %} {% endblock %}
 
       <br>
       <br>
+
+      <script src="{% static 'script.js' %}" type="text/javascript"></script>
 </body>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
 </html>
