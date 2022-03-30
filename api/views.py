@@ -6,6 +6,7 @@ from .choices import USER_TYPE_CHOICES
 from django.contrib import messages
 from .forms import *
 from datetime import datetime, timedelta
+from .filters import ShopFilter
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
@@ -45,8 +46,10 @@ def get_shop_products(request,pk):
 
 def get_all_shops(request):
     shops = Shop.objects.all()
+    filter=ShopFilter(request.GET,queryset=shops)
+    shops=filter.qs
     context = {
-        'shops':shops
+        'shops':shops,"filter":filter
     }
     return render(request,"api/allShops.html",context)
 
