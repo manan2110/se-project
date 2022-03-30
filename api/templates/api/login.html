@@ -91,18 +91,15 @@
 <div class="main">
 
 
-  <div class="signin">
+  <div class="signin" style="margin-left: 350px;">
     <form method="post">
       {% csrf_token %}
-      <label for="chk" style="margin-top: 120px;">Sign in</label>
+      <label for="chk" style="margin-top: 120px;margin-left: 275px;">Sign in</label>
       <input type="email" name="email" placeholder="Email" required="" />
+      <label for="chk" style="margin-top: 5px;"></label>
       <input type="password" name="password" placeholder="Password" required="" />
-      <!-- <select name="role" id="role" required="">
-        <option value="">Please select your role</option>
-        <option value="buyer">Buyer</option>
-        <option value="seller">Seller</option>
-      </select> -->
-      <button action="{% url 'login' %}">
+      <label for="chk" style="margin-top: 5px;"></label>
+      <button action="{% url 'login' %}" style="margin-left: 250px;">
         <a _ngcontent-c7="" class="cd-prodcuts-order-btn mat-raised-button" mat-raised-button="" tabindex="0"
           aria-disabled="false"><span class="mat-button-wrapper">Sign in</span>
         </a>
