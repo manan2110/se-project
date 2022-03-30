@@ -16,22 +16,22 @@ class User(AbstractUser):
 
 class Shop(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=512)
-    category = models.CharField(max_length=255)
-    address = models.JSONField()
-    contact = models.JSONField()
+    description = models.CharField(max_length=512,blank=True,null=True)
+    category = models.CharField(max_length=255,blank=True,null=True)
+    address = models.JSONField(blank=True,null=True)
+    contact = models.JSONField(blank=True,null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.URLField(max_length=2084,null=True,blank=True)
     location = models.CharField(max_length=128,null=True,blank = True)
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=512)
-    price = models.FloatField()
-    image = models.URLField(max_length=2084)
+    name = models.CharField(max_length=255,blank=True,null=True)
+    description = models.CharField(max_length=512,blank=True,null=True)
+    price = models.FloatField(blank=True,null=True)
+    image = models.URLField(max_length=2084,blank=True,null=True)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    category = models.CharField(max_length=255)
+    category = models.CharField(max_length=255,blank=True,null=True)
 
 
 class Subscription(models.Model):
@@ -41,11 +41,13 @@ class Subscription(models.Model):
     price = models.FloatField(blank=True,null=True)
     time_period = models.JSONField(blank=True,null=True)
     quantity_list = models.JSONField(blank=True,null=True)
+    quantity = models.IntegerField(blank=True,null=True)
+    number_of_weeks = models.IntegerField(blank=True,null=True)
 
 
 class Order(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
-    address = models.JSONField()
+    address = models.JSONField(blank=True,null=True)
     products = models.ManyToManyRel(to=Product, field=Product)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     subscription = models.ForeignKey(to=Subscription, on_delete=models.CASCADE)
