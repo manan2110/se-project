@@ -45,27 +45,25 @@
           </div>
           <div class="details col-md-6">
             <h3 class="product-title">{{ product.name}}</h3>
-            <h5 class="price">Shop: <span>{{product.shop.name}}</span></h5>
+            <h5 class="price">Shop : <span>{{product.shop.name}}</span></h5>
             <p class="product-description">{{product.description}}</p>
-            <h4 class="price">Price: <span>{{product.price}}</span></h4>
+            <h4 class="price">Price : <span>{{product.price}}</span></h4>
             <div class="subs-buttons">
               <!-- Radio buttons for Frequency -->
             <form  method="post" >
               {% csrf_token %}
-              <div class="week_counter" action = "buyer_dashboard">
-                <!-- <label>Number of weeks</label> -->
-                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
-        
-                  <input type="text" value="0" name="week_counter">
-                  <span class="up" onClick='increaseCount(event, this)'>+</span>
-                </div>
-                <!-- <input type="radio" id="weekly" name="frequency" value="weekly">
-                <label for="weekly">Weekly</label>
-                <input type="radio" id="monthly" name="frequency" value="monthly">
-                <label for="monthly">Monthly</label> -->
-              </div><br>
+              <h3 class="price">Quantity</h3>
+              <div class="counter">
+                
+                <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                <input type="text" value="0" name="counter">
+                <span class="up" onClick='increaseCount(event, this)'>+</span>
+              </div>
+            </br></br>
 
+             
 
+            <h3 class="price">Select Days</h3>
               <!-- Multiple Days Select Button -->
               <div class="multiple-day-select" role="group" data-toggle="buttons">
                 <label class="btn btn-light">
@@ -92,14 +90,17 @@
               </div>
               <br> <br>
               <!-- Quantity Counter -->
-
-              <div class="counter">
-                <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                <input type="text" value="0" name="counter">
-                <span class="up" onClick='increaseCount(event, this)'>+</span>
-              </div>
+              <h3 class="price">Number of weeks</h3>
+              <div class="week_counter" action = "buyer_dashboard">
+                <!-- <label>Number of weeks</label> -->
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+        
+                  <input type="text" value="0" name="week_counter">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>
+              
               <br>
-            </div>
+            
             <!-- subscribe button -->
             <div class="action">
               <button class="subscribe btn btn-default" type="submit">Subscribe</button>
@@ -166,7 +167,8 @@
   }
 
   .card {
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-bottom: 50px;
     background: #eee;
     padding: 3em;
     line-height: 1.5em;
@@ -248,6 +250,7 @@
   }
 
   .subscribe {
+    font-size:medium;
     background: #ff9f1a;
     padding: 1.2em 1.5em;
     border: none;
