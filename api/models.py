@@ -22,6 +22,7 @@ class Shop(models.Model):
     contact = models.JSONField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.URLField(max_length=2084,null=True,blank=True)
+    location = models.CharField(max_length=128,null=True,blank = True)
 
 
 class Product(models.Model):
@@ -37,9 +38,9 @@ class Subscription(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    price = models.FloatField()
-    time_period = models.JSONField()
-    quantity_list = models.JSONField()
+    price = models.FloatField(blank=True,null=True)
+    time_period = models.JSONField(blank=True,null=True)
+    quantity_list = models.JSONField(blank=True,null=True)
 
 
 class Order(models.Model):

@@ -8,6 +8,7 @@ from .forms import *
 from datetime import datetime, timedelta
 from .filters import ShopFilter
 # Create your views here.
+
 def home(request):
     if request.user.is_authenticated:
         return render(request, "api/home.html", context={})
@@ -53,10 +54,25 @@ def get_all_shops(request):
     }
     return render(request,"api/allShops.html",context)
 
+
 def product_details(request,pk):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        for key, value in request.POST.items():
+            print(f'Key: {key}')
+            print(f'Value: {value}') 
+        # form = CreateUserForm(request.POST)
+        # if form.is_valid():
+        #     subscription = form.save()
+        #     messages.success(request, 'Subscription Added')
+        #     return redirect('buyer_dashboard')
+        # else:
+        #     print(form.errors)   
+                     
     product = Product.objects.get(id=pk)
     context = {
         'product':product,
+        'form':form
     }  
     return render(request,"api/products.html",context)
 
