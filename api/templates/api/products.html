@@ -53,6 +53,7 @@
             <form  method="post" >
               {% csrf_token %}
               <div class="week_counter" action = "buyer_dashboard">
+                <!-- <label>Number of weeks</label> -->
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
         
                   <input type="text" value="0" name="week_counter">
@@ -68,43 +69,44 @@
               <!-- Multiple Days Select Button -->
               <div class="multiple-day-select" role="group" data-toggle="buttons">
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day1" name="multiple-day-select1" value="0">MON
+                  <input type="checkbox" id="day1" name="0" value="1">MON
                 </label>
               
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day2" name="multiple-day-select2" value="1">TUE
-                </label>
-              
-              
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day3" name="multiple-day-select3" value="2">WED
+                  <input type="checkbox" id="day2" name="1" value="1">TUE
                 </label>
               
               
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day4" name="multiple-day-select4" value="3">THU
+                  <input type="checkbox" id="day3" name="2" value="1">WED
                 </label>
               
               
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day5" name="multiple-day-select5" value="4">FRI
+                  <input type="checkbox" id="day4" name="3" value="1">THU
                 </label>
               
               
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day6" name="multiple-day-select6" value="5">SAT
+                  <input type="checkbox" id="day5" name="4" value="1">FRI
+                </label>
+              
+              
+                <label class="btn btn-light">
+                  <input type="checkbox" id="day6" name="5" value="1">SAT
                 </label>
               
                 <label class="btn btn-light">
-                  <input type="checkbox" id="day7" name="multiple-day-select7" value="6">SUN
+                  <input type="checkbox" id="day7" name="6" value="1">SUN
                 </label>
               
               </div>
               <br> <br>
               <!-- Quantity Counter -->
               <div class="counter">
+                
                 <span class="down" onClick='decreaseCount(event, this)'>-</span>
-      
+                
                 <input type="text" value="0" name="counter">
                 <span class="up" onClick='increaseCount(event, this)'>+</span>
               </div>
