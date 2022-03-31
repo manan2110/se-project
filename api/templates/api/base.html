@@ -2894,59 +2894,62 @@
             </div>
             <div class="cd-topnav-left">
               <span class="cd-topnav-headers pd-left-18" fxhide.lt-md="">
-                <a href="shops">Order Now </a></span><span class="cd-topnav-headers pd-left-18" fxhide.lt-md="" routerlink="/story"
-                routerlinkactive="active-link" tabindex="0">
-                Our Story
+                <a href="/" style="text-decoration: none;">Home </a>
               </span>
+              <span class="cd-topnav-headers pd-left-18" fxhide.lt-md="">
+                <a href="shops" style="text-decoration: none;">Order Now </a></span>
             </div>
-            <span class="nav-spacer"></span>
-            <div class="cd-topnav-right" fxhide.lt-md="">
-              {% if request.user.is_authenticated %}
+            <span class="cd-topnav-headers pd-left-18" fxhide.lt-md="">
+              <a href="buyer-dashboard" style="text-decoration: none;">Dashboard </a></span>
+          </div>
+          <span class="nav-spacer"></span>
+          <div class="cd-topnav-right" fxhide.lt-md="">
+            {% if request.user.is_authenticated %}
+            <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+              <span class="cd-ques">Hello {{ request.user }} </span>
               <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                <span class="cd-ques">Hello {{ request.user }} </span>
+                <a href="{% url 'logout' %}" style="text-decoration: none;">
+                  <span class="cd-ques">Logout</span>
+                </a>
+                {% else %}
+
                 <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                  <a href="{% url 'logout' %}" style="text-decoration: none;">
-                    <span class="cd-ques">Logout</span>
-                  </a>
-                  {% else %}
+                  <a href="{% url 'login' %}" style="text-decoration: none;">
+                    <span class="cd-ques">Existing user?</span>
+                    <span class="login">Login here</span></span>
+                </a>
+                <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+                  <a href="{% url 'signup' %}" style="text-decoration: none;">
+                    <span class="cd-ques">New user?</span>
+                    <span class="login">Signup here</span></span>
+                </a>
+                {% endif %}
 
-                  <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                    <a href="{% url 'login' %}" style="text-decoration: none;">
-                      <span class="cd-ques">Existing user?</span>
-                      <span class="login">Login here</span></span>
-                  </a>
-                  <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                    <a href="{% url 'signup' %}" style="text-decoration: none;">
-                      <span class="cd-ques">New user?</span>
-                      <span class="login">Signup here</span></span>
-                  </a>
-                  {% endif %}
-
-            </div>
-            <div class="cd-topnav-right-mob" fxhide="" fxlayout="row" fxshow.lt-md="" style="
+          </div>
+          <div class="cd-topnav-right-mob" fxhide="" fxlayout="row" fxshow.lt-md="" style="
                   flex-direction: row;
                   box-sizing: border-box;
                   display: none;
                 ">
-              <!---->
-              <div class="cd-topnav-headers mr-13 ht-42 ng-star-inserted" fxlayoutalign="center center" style="
+            <!---->
+            <div class="cd-topnav-headers mr-13 ht-42 ng-star-inserted" fxlayoutalign="center center" style="
                     place-content: center;
                     align-items: center;
                     flex-direction: row;
                     box-sizing: border-box;
                     display: flex;
                   ">
-                NCR
-                <img alt="expand" class="pd-5" src="https://assets.countrydelight.in/assets/images/expand-more.svg" />
-              </div>
-              <!---->
-              <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box" class="ng-star-inserted">
-                <a alt="app store" href="https://countrydelight.onelink.me/6XgL/8fe23a7e" rel="nofollow noopener"
-                  target="_blank"><img alt="Country Delight - app store mobile" class="appStoreMobileImg"
-                    src="https://assets.countrydelight.in/assets/images/app-store-mini.png" /></a>
-              </div>
-              <!---->
+              NCR
+              <img alt="expand" class="pd-5" src="https://assets.countrydelight.in/assets/images/expand-more.svg" />
             </div>
+            <!---->
+            <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box" class="ng-star-inserted">
+              <a alt="app store" href="https://countrydelight.onelink.me/6XgL/8fe23a7e" rel="nofollow noopener"
+                target="_blank"><img alt="Country Delight - app store mobile" class="appStoreMobileImg"
+                  src="https://assets.countrydelight.in/assets/images/app-store-mini.png" /></a>
+            </div>
+            <!---->
+          </div>
           </div>
         </mat-toolbar>
         <!---->
@@ -3351,7 +3354,7 @@
                       <a _ngcontent-c9="" routerlink="/terms-conditions" href="/terms-conditions">Terms &amp;
                         Conditions</a>
                     </div>
-                  
+
                   </div>
                   <div _ngcontent-c9="" class="cd-footer-head" style="margin-bottom: 10px">
                     Support
