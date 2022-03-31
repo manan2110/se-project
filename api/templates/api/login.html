@@ -104,6 +104,10 @@
           aria-disabled="false"><span class="mat-button-wrapper">Sign in</span>
         </a>
       </button>
+      <br>
+      {% for message in messages %}
+					<p id="messages">{{message|default_if_none:"&nbsp;" }}</p>
+				{% endfor %}
 
     </form>
   </div>
