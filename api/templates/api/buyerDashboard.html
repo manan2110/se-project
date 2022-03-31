@@ -16,7 +16,7 @@
 
   </div>
   <hr>
-
+<!-- 
 
   <div class="row">
 
@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -105,27 +105,29 @@
         <table class="table table-hover table-dark ">
           <thead>
             <tr>
-              <th scope="col">Device ID</th>
-              <th scope="col">Date & Time</th>
-              <th scope="col">Edit Device</th>
-              <th scope="col">Activity Sheet</th>
-              <th scope="col">View Device</th>
+              <th scope="col">Subscription ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Shop Name</th>
+              <!-- <th scope="col">Edit Subscription</th> -->
 
             </tr>
           </thead>
           <tbody>
-            {% for device in Devices %}
+            {% for subscription in subscriptions %}
 
             <tr>
-              <td>{{device.DeviceId|default_if_none:"&nbsp;" }}</td>
-              <td>{{device.date|default_if_none:"&nbsp;" }}</td>
-              <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
+              <td>{{subscription.id|default_if_none:"&nbsp;" }}</td>
+              <td>{{subscription.product.name|default_if_none:"&nbsp;" }}</td>
+              <td>{{subscription.product.price}}</td>
+              <td>{{subscription.product.shop.name}}</td>
+              <!-- <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
                   href="" >Edit</a></td>
               <td><a style="margin-left: 18px;" class="btn btn-md btn-success "
                   href="" >View</a></td>
 
               <td><a style="margin-left: 18px;" class="btn btn-md btn-primary"
-                  href="" >View</a></td>
+                  href="" >View</a></td> -->
             </tr>
             {% endfor %}
           </tbody>

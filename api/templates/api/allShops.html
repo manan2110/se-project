@@ -12,6 +12,7 @@
     }
 
     .card {
+       
 
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
@@ -49,7 +50,8 @@
 </div>
     {% for object in shops %}
 
-    <div class="card">
+    <div class="card" style=" display: flex;
+    flex-direction: row;">
         <a href="{% url 'shop_products' object.id  %}" style="text-decoration: none; color: slategrey;">
             <img src={{ object.image }} alt="Avatar" style="width:100%; height:auto;">
             <div class="container">
