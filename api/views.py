@@ -7,17 +7,17 @@ from .choices import USER_TYPE_CHOICES
 from django.contrib import messages
 from .forms import *
 from .filters import ShopFilter
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required(login_url='login')
 def home(request):
     if request.user.is_authenticated:
         return render(request, "api/home.html", context={})
     else:
         return redirect("login")
 
-
+@login_required(login_url='login')
 def buyer_dashboard(request):
     if not request.user.is_authenticated:
         return redirect("login")
@@ -28,19 +28,19 @@ def buyer_dashboard(request):
         context = {"subscriptions": subscriptions, "user": user, "shops": shops}
         return render(request, "api/buyerDashboard.html", context)
 
-
+@login_required(login_url='login')
 def add_subscription(request):
 
     context = {}
     return render(request, "api/addSubscription.html", context)
 
-
+@login_required(login_url='login')
 def get_shop_products(request, pk):
     products = Product.objects.filter(shop=pk)
     context = {"products": products}
     return render(request, "api/allProducts.html", context)
 
-
+@login_required(login_url='login')
 def get_all_shops(request):
     shops = Shop.objects.all()
     filter = ShopFilter(request.GET, queryset=shops)
@@ -48,7 +48,7 @@ def get_all_shops(request):
     context = {"shops": shops, "filter": filter}
     return render(request, "api/allShops.html", context)
 
-
+@login_required(login_url='login')
 def product_details(request, pk):
     form = CreateUserForm()
     product = Product.objects.get(id=pk)
