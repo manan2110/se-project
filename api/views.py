@@ -83,9 +83,6 @@ def product_details(request,pk):
 def base(request):
     return render(request, "api/base.html", context={})
 
-def cats(request):
-    products = Product.objects.all()
-    return render(request,"api/cardList.html",context={"objects":products})
 
 def sellers(request):
     return render(request,"api/sellers.html",context={})
