@@ -1,3 +1,4 @@
+from re import U
 from django.shortcuts import render, redirect
 from .models import Product, Shop, User
 from django.contrib.auth import authenticate
@@ -57,13 +58,26 @@ def get_all_shops(request):
 
 def product_details(request,pk):
     form = CreateUserForm()
+    product = Product.objects.get(id=pk)
+    
     if request.method == 'POST':
+        weeks_list = [0 for i in range(7)]
         for key, value in request.POST.items():
             print(f'Key: {key}')
             print(f'Value: {value}') 
+            if '0' <= key <= '7':
+                print("Hi")
+                weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get('week_counter')
-        quantity = request.POST.get('quantity')
+        quantity = request.POST.get('counter')
         user = request.user
+        shop = product.shop
+        time_period = {
+            'week_list':weeks_list
+        }
+        subscription = Subscription.objects.create(product=product,number_of_weeks=number_of_weeks,quantity=quantity,user=user,shop=shop,time_period=time_period)
+        subscription.save()
+        return redirect('buyer_dashboard')
         
         # form = CreateUserForm(request.POST)
         # if form.is_valid():
@@ -73,7 +87,7 @@ def product_details(request,pk):
         # else:
         #     print(form.errors)   
                      
-    product = Product.objects.get(id=pk)
+    
     context = {
         'product':product,
         'form':form
