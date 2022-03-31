@@ -1,5 +1,3 @@
-{% load static %}
-{% include 'api/navbar.html' %}
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +13,7 @@
     <style>
         label {
             font-weight: 600;
-            color: rgb(252, 250, 250);
+            color: rgb(0, 0, 0);
         }
 
         body {
@@ -25,17 +23,21 @@
         .jumbotron {
 
             background-color: #32373d;
+            padding: 0px;
 
+        }
+        form{
+            padding-top: 100px;
         }
     </style>
 </head>
+{% extends "api/base.html" %} {% block content %}
 
-<body>
 
     <div class="container">
         <form>
-            <h2 class="text-center" style="color: aliceblue;">Add New Subscription</h2>
-            <div class="row jumbotron">
+            <h2 class="text-center" style="color: rgb(0, 0, 0);">Add New Subscription</h2>
+            <div class="row jumbotron" style="padding: 10px;">
                 <div class="col-sm-6 form-group">
                     <label for="deviceid">Device ID</label>
                     <input type="text" class="form-control" name="DeviceId" id="deviceid" placeholder="Enter Device ID"
@@ -99,6 +101,5 @@
     </div>
 
 
-</body>
-
+{% endblock content %}
 </html>

@@ -64,13 +64,12 @@
 
     button {
       height: 40px;
-      margin: 10px auto 20px auto;
+      margin-left:10px;
       justify-content: center;
       display: block;
       color: #fff;
       font-size: 1em;
       font-weight: bold;
-      margin-top: 20px;
       outline: none;
       border: none;
       border-radius: 5px;
@@ -83,12 +82,15 @@
     }
 
     .signup {
-      width: 80%;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 30px;
       margin-bottom: 30px;
       margin-top: 0%;
+    }
+    form{
+      padding-left: 400px;
+
     }
   </style>
 </head>
@@ -98,21 +100,21 @@
 
 
   <div class="signup">
-    <form method="post">
+    <form method="post" class="signup">
       {% csrf_token %}
-      <label for="chk" style="margin-top: 120px;">Sign up</label>
-      <input type="text" name="first_name" placeholder="First name" required="" />
-      <input type="text" name="last_name" placeholder="Last name" required="" />
-      <input type="email" name="username" placeholder="Email" required="" />
-      <input type="password" name="password1" placeholder="Password" required="" />
-      <input type="password" name="password2" placeholder="Re-Enter Password" required="" />
-      <input type="tel" id="phone" name="phone" placeholder="Mobile Number" required />
-      <select name="user_type" id="user_type" required="">
+      <label for="chk" style="margin-top: 120px; margin-left: 250px;">Sign up</label>
+      <input type="text" name="first_name" style="margin-top: 20px;" placeholder="First name" required="" />
+      <input type="text" name="last_name" style="margin-top: 20px;" placeholder="Last name" required="" />
+      <input type="email" name="username" style="margin-top: 20px;" placeholder="Email" required="" />
+      <input type="password" name="password1" style="margin-top: 20px;" placeholder="Password" required="" />
+      <input type="password" name="password2" style="margin-top: 20px;" placeholder="Re-Enter Password" required="" />
+      <input type="tel" id="phone" name="phone" style="margin-top: 20px;" placeholder="Mobile Number" required />
+      <select name="user_type" id="user_type" style="margin-top: 20px;" required="">
         <option value="">Please choose an option</option>
         <option value="buyer">BUYER</option>
         <option value="seller">SELLER</option>
       </select>
-      <button action="{% url 'signup' %}">
+      <button action="{% url 'signup' %}" style="margin-left: 250px; margin-top: 15px;">
         <a _ngcontent-c7="" class="cd-prodcuts-order-btn mat-raised-button" mat-raised-button="" tabindex="0"
           aria-disabled="false"><span class="mat-button-wrapper">Sign Up</span>
           <div class="mat-button-ripple mat-ripple" matripple=""></div>
