@@ -36,18 +36,20 @@
         font-size: larger;
     }
     form{
-        padding-top: 40px;
+        padding-top: 100px;
         padding-left: 30px;
     }
 </style>
-<div class="parent">
-    <form method="GET">
-        <p>Shop Name  :  {{filter.form.name__icontains}}   Category  :  {{filter.form.category__icontains}}   City  :  {{filter.form.location__icontains}} <button class="btn btn-primary" type="submit">Search</button></p>
-        
+<form method="GET">
+    <p>Shop Name  :  {{filter.form.name__icontains}}   Category  :  {{filter.form.category__icontains}}   City  :  {{filter.form.location__icontains}} <button class="btn btn-primary" type="submit">Search</button></p>
     
-  </form>
 
-</div>
+</form>
+<div class="parent">
+    
+</br></br></br>
+
+
     {% for object in shops %}
 
     <div class="card" style=" display: flex;
