@@ -96,9 +96,9 @@
     <div class="card text-white bg-secondary">
 
       <h2 class="card-title" style="position: absolute; left: 20px; margin-top: 12px;">My Subscription's</h2>
-      <a href=""  rel="noopener noreferrer"
+      <!-- <a href=""  rel="noopener noreferrer"
         style="position: absolute; right: 20px; margin-top: 15px; margin-right : 46px " type="button"
-        class="btn btn-light ">View All</a>
+        class="btn btn-light ">View All</a> -->
       <br>
       <br>
       <div class="card-body">
@@ -107,7 +107,10 @@
             <tr>
               <th scope="col">Subscription ID</th>
               <th scope="col">Product Name</th>
+              <th scope="col">Product Image</th>
+              <th scope="col">Product Description</th>
               <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
               <th scope="col">Shop Name</th>
               <!-- <th scope="col">Edit Subscription</th> -->
 
@@ -119,7 +122,10 @@
             <tr>
               <td>{{subscription.id|default_if_none:"&nbsp;" }}</td>
               <td>{{subscription.product.name|default_if_none:"&nbsp;" }}</td>
+              <td><img src={{ subscription.product.image }} alt="Avatar" style="width:50%; height:auto;"></td>
+              <td>{{subscription.product.description}}</td>
               <td>{{subscription.product.price}}</td>
+              <td>{{subscription.quantity}}</td>
               <td>{{subscription.product.shop.name}}</td>
               <!-- <td><a style="margin-left: 16px;" class="btn btn-md btn-danger"
                   href="" >Edit</a></td>
@@ -134,7 +140,7 @@
 
         </table>
         <div class="card-footer bg-dark">
-          <small class="text-white ">Last 5 Devices</small>
+          <!-- <small class="text-white ">Last 5 Devices</small> -->
 
 
         </div>
