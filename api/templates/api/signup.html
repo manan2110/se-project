@@ -117,10 +117,13 @@
       <button action="{% url 'signup' %}" style="margin-left: 250px; margin-top: 15px;">
         <a _ngcontent-c7="" class="cd-prodcuts-order-btn mat-raised-button" mat-raised-button="" tabindex="0"
           aria-disabled="false"><span class="mat-button-wrapper">Sign Up</span>
+          
           <div class="mat-button-ripple mat-ripple" matripple=""></div>
           <div class="mat-button-focus-overlay"></div>
         </a>
+        
       </button>
+      <th style="color: red;">{{form.errors|default_if_none:"&nbsp;" }}</th>
     </form>
   </div>
 </div>
