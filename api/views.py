@@ -146,15 +146,15 @@ def logoutUser(request):
 @login_required(login_url='login')
 def get_cart(request):
     user = request.user
-    if not Cart.objects.filter(user=user.id).exists():
-        cart = Cart.objects.create(user=user.id)
+    if not Cart.objects.filter(user=user).exists():
+        cart = Cart.objects.create(user=user)
         cart.save()
     else:
-        cart = Cart.objects.get(user=user.id)
+        cart = Cart.objects.get(user=user)
     context = {
         'cart':cart
     }
-    return render(request,"api/cart.html",cart)
+    return render(request,"api/cart.html",context)
 
 
 
