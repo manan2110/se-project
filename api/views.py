@@ -141,3 +141,20 @@ def view_login(request):
 def logoutUser(request):
     logout(request)
     return redirect("/login")
+
+
+@login_required(login_url='login')
+def get_cart(request):
+    user = request.user
+    if not Cart.objects.filter(user=user).exists():
+        cart = Cart.objects.create(user=user)
+        cart.save()
+    else:
+        cart = Cart.objects.get(user=user)
+    context = {
+        'cart':cart
+    }
+    return render(request,"api/cart.html",context)
+
+
+

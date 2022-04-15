@@ -12,5 +12,6 @@ urlpatterns = [
     path("shop-products/<str:pk>", views.get_shop_products,name="shop_products"),
     path("buyer-dashboard", views.buyer_dashboard,name="buyer_dashboard"),
     path("add-subscription", views.add_subscription,name="add_subscription"),
-    path("shops/",views.get_all_shops,name="all_shops")
+    path("shops/",views.get_all_shops,name="all_shops"),
+    path("cart",views.get_cart,name="cart")
 ]
