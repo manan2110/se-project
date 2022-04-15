@@ -587,7 +587,7 @@
       text-decoration: none;
       transition: all 0.2s ease-in-out;
       font-family: Montserrat !important;
-      font-size: 12px;
+      font-size: 15px;
       font-weight: 700;
       line-height: normal;
       font-style: normal;
@@ -2889,7 +2889,7 @@
           <!---->
           <div class="topnav-container ng-star-inserted">
             <div class="nav-brand" routerlink="" tabindex="0">
-              <img alt="Country Delight Logo" style="width: 70px; height: 70px"
+              <img alt="Logo" style="width: 70px; height: 70px"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ektfbp-KGFoday2cOwUfXtp9w2qreX1iMw&usqp=CAU" />
             </div>
             <div class="cd-topnav-left">
@@ -2904,7 +2904,12 @@
           </div>
           <span class="nav-spacer"></span>
           <div class="cd-topnav-right" fxhide.lt-md="">
+            
             {% if request.user.is_authenticated %}
+            
+            <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+              <a href="{% url 'cart' %}" style="text-decoration: none;">
+                <span class="cd-ques">Cart</span>
             <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
               <span class="cd-ques">Hello {{ request.user }} </span>
               <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">

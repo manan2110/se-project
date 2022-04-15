@@ -52,8 +52,12 @@
               <td>{{subscription.product.price}}</td>
               <td>{{subscription.quantity}}</td>
               <td>{{subscription.price}}</td>
-              <td><button action="{% url 'edit_subscription' subscription.product.id %}" class="btn btn-primary" type="submit">Edit</button></td>
-              <td><button action="{% url 'edit_subscription' subscription.product.id %}" class="btn btn-primary" type="submit">Delete</button></td>
+              <td><a href="{% url 'edit_subscription' subscription.product.id %}"  rel="noopener noreferrer"
+                 type="button"
+                class="btn btn-light blue" style="background-color: #0081cd; color: white;">Edit</a></td>
+              <td><a href="{% url 'edit_subscription' subscription.product.id %}"  rel="noopener noreferrer"
+                 type="button"
+                class="btn btn-light" style="background-color: #f10000;  color: white;">Delete</a></td>
 
             </tr>
             {% endfor %}
