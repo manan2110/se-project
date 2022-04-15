@@ -1,5 +1,3 @@
-# Essentials
-
 <img src="admin-interface/logo\essentials_BGmyaGs.png">
 
 **Essentials** is a webapp which provides a platform to manage daily essential services like milk, newspaper, dairy products, poultry, or seafood items.
