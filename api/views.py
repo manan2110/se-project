@@ -56,14 +56,13 @@ def product_details(request, pk):
     if request.method == "POST":
         weeks_list = [0 for i in range(7)]
         for key, value in request.POST.items():
-            print(f"Key: {key}")
-            print(f"Value: {value}")
+            # print(f"Key: {key}")
+            # print(f"Value: {value}")
             if "0" <= key <= "7":
-                print("Hi")
+                # print("Hi")
                 weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get("week_counter")
-        quantity = request.POST.get("counter")
-        print(weeks_list)
+        quantity = number_of_weeks*sum(weeks_list)
         user = request.user
         shop = product.shop
         time_period = {"week_list": weeks_list}
@@ -74,17 +73,13 @@ def product_details(request, pk):
             user=user,
             shop=shop,
             time_period=time_period,
+            has_ordered = False
         )
         subscription.save()
+        cart = Cart.objects.get(user=request.user)
+        cart.subscriptions.add(subscription)
+        cart.save()
         return redirect("buyer_dashboard")
-
-        # form = CreateUserForm(request.POST)
-        # if form.is_valid():
-        #     subscription = form.save()
-        #     messages.success(request, 'Subscription Added')
-        #     return redirect('buyer_dashboard')
-        # else:
-        #     print(form.errors)
 
     context = {"product": product, "form": form}
     return render(request, "api/products.html", context)
@@ -151,13 +146,10 @@ def get_cart(request):
         cart.save()
     else:
         cart = Cart.objects.get(user=user)
-    # subscriptions = []
-    # subscription_list = cart.subscriptions
-    # for id in subscription_list:
     #     subscriptions.append(Subscription.objects.get(id=id))
     context = {
         'cart':cart,
-        'subscriptions':cart.subscriptions
+        'subscriptions':cart.subscriptions.all()
     }
     return render(request,"api/cart.html",context)
 

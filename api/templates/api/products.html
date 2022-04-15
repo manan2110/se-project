@@ -158,9 +158,9 @@
               <h3 class="price">Number of weeks</h3>
               <div class="week_counter" action = "buyer_dashboard">
                 <!-- <label>Number of weeks</label> -->
-                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <span class="down" onClick='decreaseweekCount(event, this)'>-</span>
         
-                  <input type="text" value="0" name="week_counter">
+                  <input type="text" value="1" name="week_counter">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>
               
@@ -538,6 +538,15 @@ text-align: left;
     var input = b.nextElementSibling;
     var value = parseInt(input.value, 10);
     if (value > 0) {
+      value = isNaN(value) ? 0 : value;
+      value--;
+      input.value = value;
+    }
+  }
+  function decreaseweekCount(a, b) {
+    var input = b.nextElementSibling;
+    var value = parseInt(input.value, 10);
+    if (value > 1) {
       value = isNaN(value) ? 0 : value;
       value--;
       input.value = value;
