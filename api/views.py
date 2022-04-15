@@ -23,10 +23,12 @@ def buyer_dashboard(request):
     if not request.user.is_authenticated:
         return redirect("login")
     else:
+        days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+        index = [0,1,2,3,4,5,6]
         user = request.user
         subscriptions = Subscription.objects.filter(user=user.id)
         shops = Shop.objects.all()
-        context = {"subscriptions": subscriptions, "user": user, "shops": shops}
+        context = {"subscriptions": subscriptions, "user": user, "shops": shops,"days":days,'index':index}
         return render(request, "api/buyerDashboard.html", context)
 
 @login_required(login_url='login')

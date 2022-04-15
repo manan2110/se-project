@@ -2,7 +2,6 @@
 {% extends "api/base.html" %} 
 
 {% block content %}
-
 <br>
 
 
@@ -53,7 +52,12 @@
               <td>{{subscription.product.shop.name}}</td>
               <td><img src={{ subscription.product.image }} alt="Avatar" style="width:150px; height:130px;"></td>
               <td>{{subscription.product.description}}</td>
-              <td>{{subscription.time_period.week_list}}</td>
+              <td>
+                M | T | W | T | F | S | S <br>&nbsp;
+                {% for count in subscription.time_period.week_list %}
+                      {{count}} &nbsp;
+                {% endfor %}
+              </td>
               <td>{{subscription.product.price}}</td>
               <td>{{subscription.quantity}}</td>
               <td>{{subscription.price}}</td>
