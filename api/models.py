@@ -41,7 +41,7 @@ class Subscription(models.Model):
     quantity_list = models.JSONField(blank=True, null=True)
     quantity = models.IntegerField(blank=True, null=True)
     number_of_weeks = models.IntegerField(blank=True, null=True)
-
+    has_ordered = models.BooleanField(default=False,blank=True,null=True)
 
 class Order(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
@@ -50,6 +50,6 @@ class Order(models.Model):
     subscriptions = models.ManyToManyField(to=Subscription)
 
 class Cart(models.Model):
-    subscriptions = models.ManyToManyField(to=Subscription)
+    subscriptions = models.ManyToManyField(to=Subscription,blank=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     cart_value = models.FloatField(blank=True,null=True)
