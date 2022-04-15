@@ -10,6 +10,8 @@ class User(AbstractUser):
         choices=user_constants.USER_TYPE_CHOICES, null=True, blank=True
     )
     phone = models.CharField(max_length=15, blank=True)
+    def __str__(self):
+        return self.username
 
 
 class Shop(models.Model):
@@ -21,6 +23,8 @@ class Shop(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.URLField(max_length=2084, null=True, blank=True)
     location = models.CharField(max_length=128, null=True, blank=True)
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -30,6 +34,9 @@ class Product(models.Model):
     image = models.URLField(max_length=2084, blank=True, null=True)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     category = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Subscription(models.Model):

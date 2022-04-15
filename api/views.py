@@ -230,7 +230,7 @@ def delete_from_cart(request, pk):
     cart.save()
     #     subscriptions.append(Subscription.objects.get(id=id))
     context = {"cart": cart, "subscriptions": cart.subscriptions.all()}
-    return render(request, "api/cart.html", context)
+    return redirect("cart")
 
 
 @login_required(login_url="login")
