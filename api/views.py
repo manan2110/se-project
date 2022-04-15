@@ -151,13 +151,13 @@ def get_cart(request):
         cart.save()
     else:
         cart = Cart.objects.get(user=user)
-    subscriptions = []
-    subscription_list = cart.subscriptions
-    for id in subscription_list:
-        subscriptions.append(Subscription.objects.get(id=id))
+    # subscriptions = []
+    # subscription_list = cart.subscriptions
+    # for id in subscription_list:
+    #     subscriptions.append(Subscription.objects.get(id=id))
     context = {
         'cart':cart,
-        'subscriptions':subscriptions
+        'subscriptions':cart.subscriptions
     }
     return render(request,"api/cart.html",context)
 
