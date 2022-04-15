@@ -63,6 +63,7 @@ def product_details(request, pk):
                 weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get("week_counter")
         quantity = request.POST.get("counter")
+        print(weeks_list)
         user = request.user
         shop = product.shop
         time_period = {"week_list": weeks_list}

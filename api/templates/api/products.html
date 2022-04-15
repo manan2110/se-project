@@ -46,50 +46,115 @@
           <div class="details col-md-6">
             <h3 class="product-title">{{ product.name}}</h3>
             <h5 class="price">Shop : <span>{{product.shop.name}}</span></h5>
-            <p class="product-description">{{product.description}}</p>
+            <h5 class="price"> Product Description : <span>{{product.description}} </span></h5>
             <h4 class="price">Price : <span>{{product.price}}</span></h4>
             <div class="subs-buttons">
               <!-- Radio buttons for Frequency -->
             <form  method="post" >
               {% csrf_token %}
-              <h3 class="price">Quantity</h3>
-              <div class="counter">
-                
-                <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                <input type="text" value="0" name="counter">
-                <span class="up" onClick='increaseCount(event, this)'>+</span>
-              </div>
-            </br></br>
+               
+              
 
              
 
             <h3 class="price">Select Days</h3>
               <!-- Multiple Days Select Button -->
               <div class="multiple-day-select" role="group" data-toggle="buttons">
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day1" name="0" value="1">MON
-                </label>              
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day2" name="1" value="1">TUE
-                </label>            
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day3" name="2" value="1">WED
-                </label>              
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day4" name="3" value="1">THU
-                </label>              
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day5" name="4" value="1">FRI
-                </label>          
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day6" name="5" value="1">SAT
-                </label>              
-                <label class="btn btn-light">
-                  <input type="checkbox" id="day7" name="6" value="1">SUN
-                </label>              
+
+                <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day1" name="0" value="1" style="opacity:0;" disabled="true">MON
+                </label>        
+                 
+                <div class="counter">
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="0">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div> 
+              </div>   
+
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day2" name="1" value="1" style="opacity:0;" disabled="true">TUE
+                </label>
+
+                 
+                <div class="counter">
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="1">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>
+              </div>    
+              
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day3" name="2" value="1" style="opacity:0;" disabled="true">WED
+                </label> 
+
+                 
+                <div class="counter">
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="2">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>
+              </div>
+              
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day4" name="3" value="1" style="opacity:0;" disabled="true">THU
+                </label>  
+
+                 
+                <div class="counter"> 
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="3">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div> 
+              </div>
+              
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day5" name="4" value="1" style="opacity:0;" disabled="true">FRI
+                </label> 
+
+                 
+                <div class="counter">   
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="4">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>   
+              </div>     
+
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day6" name="5" value="1" style="opacity:0;" disabled="true">SAT
+                </label>  
+
+                 
+                <div class="counter">
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="5">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div>
+              </div>
+              
+              <div class="day-counter">
+                <label class="butt btn btn-light">
+                  <input type="checkbox" id="day7" name="6" value="1" style="opacity:0;" disabled="true">SUN
+                </label> 
+
+                 
+                <div class="counter">  
+                  <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                  <input type="text" value="0" name="6">
+                  <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </div> 
+              </div>           
               </div>
               <br> <br>
               <!-- Quantity Counter -->
+              <div class="week-counter">
+                <div>
               <h3 class="price">Number of weeks</h3>
               <div class="week_counter" action = "buyer_dashboard">
                 <!-- <label>Number of weeks</label> -->
@@ -100,11 +165,13 @@
                 </div>
               
               <br>
+            </div>
             
             <!-- subscribe button -->
             <div class="action">
-              <button class="subscribe btn btn-default" type="submit">Subscribe</button>
+              <button class="subscribe btn btn-default" type="submit">Add to Cart</button>
             </div>
+          </div>
           </form>
           </div>
         </div>
@@ -119,11 +186,22 @@
 
 <style>
   /*****************globals*************/
+  .butt{
+    width: 100px;
+    margin-right: 20px;
+    font-size: medium;
+  }
   body {
     font-family: 'open sans';
     overflow-x: hidden;
   }
 
+  h3
+  {
+margin-top:5px;
+text-align: left;
+
+  }
   img {
     max-width: 100%;
   }
@@ -167,7 +245,7 @@
   }
 
   .card {
-    margin-top: 150px;
+    margin-top: 100px;
     margin-bottom: 50px;
     background: #eee;
     padding: 3em;
@@ -354,14 +432,27 @@
 
   /* Counter */
 
-
+.day-counter
+{
+  display: flex;
+  align-items: center;
+}
+.week-counter
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
   .counter {
-    width: 150px;
+    width: 120px;
     border-style: ridge;
     display: flex;
     align: justify;
     align-items: center;
     justify-content: center;
+    margin-bottom: 5px;
+    background-color: #f79917;
+    border-radius: 5px;
   }
 
   .counter input {
