@@ -198,7 +198,7 @@ def delete_from_cart(request,pk):
     user = request.user
     
     cart = Cart.objects.get(user=user)
-    cart.susbscriptions.remove(pk)
+    cart.subscriptions.remove(pk)
     cart.save()
     #     subscriptions.append(Subscription.objects.get(id=id))
     context = {
