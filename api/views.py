@@ -191,5 +191,19 @@ def get_cart(request):
     }
     return render(request,"api/cart.html",context)
 
+@login_required(login_url='login')
+def delete_from_cart(request,pk):
+    user = request.user
+    
+    cart = Cart.objects.get(user=user)
+    cart.susbscriptions.remove(pk)
+    cart.save()
+    #     subscriptions.append(Subscription.objects.get(id=id))
+    context = {
+        'cart':cart,
+        'subscriptions':cart.subscriptions.all()
+    }
+    return render(request,"api/cart.html",context)
+
 
 
