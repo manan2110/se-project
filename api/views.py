@@ -79,7 +79,7 @@ def product_details(request, pk):
         cart = Cart.objects.get(user=request.user)
         cart.subscriptions.add(subscription)
         cart.save()
-        return redirect("buyer_dashboard")
+        return redirect("cart")
 
     context = {"product": product, "form": form}
     return render(request, "api/products.html", context)
