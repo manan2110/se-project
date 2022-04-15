@@ -17,8 +17,8 @@
 
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
-        width: 13%;
-        height: 10%;
+        width: 160px;
+        height: 160px;
         border-radius: 5px;
         margin: 30px;
         text-align: center;
@@ -42,12 +42,14 @@
 
     <div class="card">
         <a href="{% url 'product_details' object.id  %}" style="text-decoration: none; color: slategrey;">
-            <img src={{ object.image }} alt="Avatar" style="width:100%; height:auto;">
+            <img src={{ object.image }} alt="Avatar" style="width:100%; height:130px;">
             <div class="container">
             </div>
-            <h5>{{object.name}}</h5>
+            
         </a>
+        <h5>{{object.name}}</h5>
     </div>
+    
 
 
     </br>
