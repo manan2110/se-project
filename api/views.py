@@ -1,3 +1,4 @@
+from itertools import product
 from re import U
 from django.shortcuts import render, redirect
 from .models import Product, Shop, User
@@ -62,7 +63,8 @@ def product_details(request, pk):
                 # print("Hi")
                 weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get("week_counter")
-        quantity = number_of_weeks*sum(weeks_list)
+        quantity = int(number_of_weeks)*(sum(weeks_list))
+        price = quantity*product.price
         user = request.user
         shop = product.shop
         time_period = {"week_list": weeks_list}
@@ -73,9 +75,13 @@ def product_details(request, pk):
             user=user,
             shop=shop,
             time_period=time_period,
-            has_ordered = False
+            has_ordered = False,
+            price=price
         )
         subscription.save()
+        if not Cart.objects.filter(user=request.user).exists():
+            cart = Cart.objects.create(user=request.user)
+            cart.save()
         cart = Cart.objects.get(user=request.user)
         cart.subscriptions.add(subscription)
         cart.save()
@@ -83,6 +89,38 @@ def product_details(request, pk):
 
     context = {"product": product, "form": form}
     return render(request, "api/products.html", context)
+
+def edit_subscription(request,pk):
+    subscription = Subscription.objects.get(id=pk)
+    product=subscription.product
+    if request.method == "POST":
+        weeks_list = [0 for i in range(7)]
+        for key, value in request.POST.items():
+            # print(f"Key: {key}")
+            # print(f"Value: {value}")
+            if "0" <= key <= "7":
+                # print("Hi")
+                weeks_list[int(key)] = int(value)
+        number_of_weeks = request.POST.get("week_counter")
+        quantity = int(number_of_weeks)*(sum(weeks_list))
+        price = quantity*product.price
+        time_period = {"week_list": weeks_list}
+        subscription.number_of_weeks=number_of_weeks
+        subscription.quantity=quantity
+        subscription.time_period=time_period
+        subscription.price=price
+        subscription.save()
+        if not Cart.objects.filter(user=request.user).exists():
+            cart = Cart.objects.create(user=request.user)
+            cart.save()
+        cart = Cart.objects.get(user=request.user)
+        cart.subscriptions.add(subscription)
+        cart.save()
+        return redirect("cart")
+    context = {
+        "subscription":subscription
+    }
+    return render(request,"api/edit_subscription.html",context) 
 
 
 def base(request):
