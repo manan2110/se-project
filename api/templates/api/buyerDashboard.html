@@ -32,11 +32,14 @@
             <tr>
               <th scope="col">Subscription ID</th>
               <th scope="col">Product Name</th>
+              <th scope="col">Shop Name</th>
               <th scope="col">Product Image</th>
               <th scope="col">Product Description</th>
-              <th scope="col">Price</th>
+              <th scope="col">Days</th>
+              <th scope="col">Product Price</th>
               <th scope="col">Quantity</th>
-              <th scope="col">Shop Name</th>
+              <th scope="col">Subscription Price</th>
+              
               <!-- <th scope="col">Edit Subscription</th> -->
 
             </tr>
@@ -47,11 +50,14 @@
             <tr>
               <td>{{subscription.id|default_if_none:"&nbsp;" }}</td>
               <td>{{subscription.product.name|default_if_none:"&nbsp;" }}</td>
-              <td><img src={{ subscription.product.image }} alt="Avatar" style="width:50%; height:auto;"></td>
+              <td>{{subscription.product.shop.name}}</td>
+              <td><img src={{ subscription.product.image }} alt="Avatar" style="width:150px; height:130px;"></td>
               <td>{{subscription.product.description}}</td>
+              <td>{{subscription.time_period.week_list}}</td>
               <td>{{subscription.product.price}}</td>
               <td>{{subscription.quantity}}</td>
-              <td>{{subscription.product.shop.name}}</td>
+              <td>{{subscription.price}}</td>
+              
             </tr>
             {% endfor %}
           </tbody>
