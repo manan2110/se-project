@@ -9,41 +9,61 @@ from django.contrib import messages
 from .forms import *
 from .filters import ShopFilter
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def home(request):
     if request.user.is_authenticated:
         return render(request, "api/home.html", context={})
     else:
         return redirect("login")
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def buyer_dashboard(request):
     if not request.user.is_authenticated:
         return redirect("login")
     else:
-        days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-        index = [0,1,2,3,4,5,6]
+        days = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ]
+        index = [0, 1, 2, 3, 4, 5, 6]
         user = request.user
         subscriptions = Subscription.objects.filter(user=user.id)
         shops = Shop.objects.all()
-        context = {"subscriptions": subscriptions, "user": user, "shops": shops,"days":days,'index':index}
+        context = {
+            "subscriptions": subscriptions,
+            "user": user,
+            "shops": shops,
+            "days": days,
+            "index": index,
+        }
         return render(request, "api/buyerDashboard.html", context)
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def add_subscription(request):
 
     context = {}
     return render(request, "api/addSubscription.html", context)
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def get_shop_products(request, pk):
     products = Product.objects.filter(shop=pk)
     context = {"products": products}
     return render(request, "api/allProducts.html", context)
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def get_all_shops(request):
     shops = Shop.objects.all()
     filter = ShopFilter(request.GET, queryset=shops)
@@ -51,7 +71,8 @@ def get_all_shops(request):
     context = {"shops": shops, "filter": filter}
     return render(request, "api/allShops.html", context)
 
-@login_required(login_url='login')
+
+@login_required(login_url="login")
 def product_details(request, pk):
     form = CreateUserForm()
     product = Product.objects.get(id=pk)
@@ -65,8 +86,8 @@ def product_details(request, pk):
                 # print("Hi")
                 weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get("week_counter")
-        quantity = int(number_of_weeks)*(sum(weeks_list))
-        price = quantity*product.price
+        quantity = int(number_of_weeks) * (sum(weeks_list))
+        price = quantity * product.price
         user = request.user
         shop = product.shop
         time_period = {"week_list": weeks_list}
@@ -77,8 +98,8 @@ def product_details(request, pk):
             user=user,
             shop=shop,
             time_period=time_period,
-            has_ordered = False,
-            price=price
+            has_ordered=False,
+            price=price,
         )
         subscription.save()
         if not Cart.objects.filter(user=request.user).exists():
@@ -92,10 +113,11 @@ def product_details(request, pk):
     context = {"product": product, "form": form}
     return render(request, "api/products.html", context)
 
-def edit_subscription(request,pk):
+
+def edit_subscription(request, pk):
     subscription = Subscription.objects.get(id=pk)
     weeks = subscription.time_period["week_list"]
-    product=subscription.product
+    product = subscription.product
     if request.method == "POST":
         weeks_list = [0 for i in range(7)]
         for key, value in request.POST.items():
@@ -105,13 +127,13 @@ def edit_subscription(request,pk):
                 # print("Hi")
                 weeks_list[int(key)] = int(value)
         number_of_weeks = request.POST.get("week_counter")
-        quantity = int(number_of_weeks)*(sum(weeks_list))
-        price = quantity*product.price
+        quantity = int(number_of_weeks) * (sum(weeks_list))
+        price = quantity * product.price
         time_period = {"week_list": weeks_list}
-        subscription.number_of_weeks=number_of_weeks
-        subscription.quantity=quantity
-        subscription.time_period=time_period
-        subscription.price=price
+        subscription.number_of_weeks = number_of_weeks
+        subscription.quantity = quantity
+        subscription.time_period = time_period
+        subscription.price = price
         subscription.save()
         if not Cart.objects.filter(user=request.user).exists():
             cart = Cart.objects.create(user=request.user)
@@ -120,11 +142,8 @@ def edit_subscription(request,pk):
         cart.subscriptions.add(subscription)
         cart.save()
         return redirect("cart")
-    context = {
-        "subscription":subscription,
-        "weeks":weeks
-    }
-    return render(request,"api/edit_subscription.html",context) 
+    context = {"subscription": subscription, "weeks": weeks}
+    return render(request, "api/edit_subscription.html", context)
 
 
 def base(request):
@@ -180,7 +199,7 @@ def logoutUser(request):
     return redirect("/login")
 
 
-@login_required(login_url='login')
+@login_required(login_url="login")
 def get_cart(request):
     user = request.user
     if not Cart.objects.filter(user=user).exists():
@@ -188,26 +207,41 @@ def get_cart(request):
         cart.save()
     else:
         cart = Cart.objects.get(user=user)
+    subscription = cart.subscriptions.all()
+    total = 0
+    for x in subscription:
+        total += x.price
+    print(subscription)
     #     subscriptions.append(Subscription.objects.get(id=id))
     context = {
-        'cart':cart,
-        'subscriptions':cart.subscriptions.all()
+        "cart": cart,
+        "subscriptions": cart.subscriptions.all(),
+        "total_amount": total,
     }
-    return render(request,"api/cart.html",context)
+    return render(request, "api/cart.html", context)
 
-@login_required(login_url='login')
-def delete_from_cart(request,pk):
+
+@login_required(login_url="login")
+def delete_from_cart(request, pk):
     user = request.user
-    
+
     cart = Cart.objects.get(user=user)
     cart.subscriptions.remove(pk)
     cart.save()
     #     subscriptions.append(Subscription.objects.get(id=id))
-    context = {
-        'cart':cart,
-        'subscriptions':cart.subscriptions.all()
-    }
-    return render(request,"api/cart.html",context)
+    context = {"cart": cart, "subscriptions": cart.subscriptions.all()}
+    return render(request, "api/cart.html", context)
 
 
-
+@login_required(login_url="login")
+def checkout(request, pk):
+    user = request.user
+    cart = Cart.objects.get(user=user)
+    #     subscriptions.append(Subscription.objects.get(id=id))
+    subscription = cart.subscriptions.all()
+    items = []
+    for x in subscription:
+        items.append(x.product)
+    print(items)
+    context = {"items": items, "subscriptions": cart.subscriptions.all()}
+    return render(request, "api/checkout.html", context)

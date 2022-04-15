@@ -1,5 +1,4 @@
-
-{% extends "api/base.html" %} 
+{% extends "api/base.html" %}
 
 {% block content %}
 
@@ -9,8 +8,8 @@
 <div class="container-fluid">
   <div class="row">
     <!-- <h2 style=" color: rgb(23, 60, 131);position: absolute; left: 20px;">My Subscription's</h2> -->
-    <a href="{% url 'add_subscription' %}"  rel="noopener noreferrer"
-      style="position: absolute; right: 20px;" type="button" class="btn btn-info  btn-lg">Add Subscription</a>
+    <a href="{% url 'add_subscription' %}" rel="noopener noreferrer" style="position: absolute; right: 20px;"
+      type="button" class="btn btn-info  btn-lg">Add Subscription</a>
     <br>
     <br>
 
@@ -52,13 +51,10 @@
               <td>{{subscription.product.price}}</td>
               <td>{{subscription.quantity}}</td>
               <td>{{subscription.price}}</td>
-              <td><a href="{% url 'edit_subscription' subscription.id %}"  rel="noopener noreferrer"
-                 type="button"
-                class="btn btn-light blue" style="background-color: #0081cd; color: white;">Edit</a></td>
-              <td><a href="{% url 'delete_from_cart' subscription.id %}"  rel="noopener noreferrer"
-                 type="button"
-                class="btn btn-light" style="background-color: #f10000;  color: white;">Delete</a></td>
-
+              <td><a href="{% url 'edit_subscription' subscription.id %}" rel="noopener noreferrer" type="button"
+                  class="btn btn-light blue" style="background-color: #0081cd; color: white;">Edit</a></td>
+              <td><a href="{% url 'delete_from_cart' subscription.id %}" rel="noopener noreferrer" type="button"
+                  class="btn btn-light" style="background-color: #f10000;  color: white;">Delete</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -66,16 +62,17 @@
         </table>
         <div class="card-footer bg-light">
           <!-- <small class="text-white ">Last 5 Devices</small> -->
-
-
+          Total Amount : {{ total_amount }}
+          <button type="button" class="btn btn-success" style="float: right; margin-top: -6px;"><a
+              href="{% url 'checkout' cart.id  %}" style="text-decoration: none; color: #e9ecef;">Checkout</a></button>
         </div>
       </div>
-    </div>
   </div>
-  <br>
-  <br>
+</div>
+<br>
+<br>
 
 
 
 
- {% endblock content %}
+{% endblock content %}
