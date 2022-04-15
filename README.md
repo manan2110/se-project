@@ -8,6 +8,8 @@
 
 ## What it does :
 
+**Scope**:  Our application will digitize the delivery of daily essential products. The scope of such an online marketplace is huge because every household requires daily essential products, in turn increasing the need for such applications. Convenience and quickness are the most impressive advantages of the system. It also removes the ambiguity in the billing.
+
 
 
 <p align="center">
@@ -21,6 +23,8 @@
 -   Backend : **Django**
 -   Frontend : **HTML, CSS & Javascript**
 -   Database : **SQLite3**
+-   Tools : **VScode, Git**
+
 
 
 ## How to use :
