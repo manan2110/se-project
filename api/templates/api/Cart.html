@@ -36,6 +36,7 @@
               <th scope="col">Quantity</th>
               <th scope="col">Subscription Price</th>
               <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
               <!-- <th scope="col">Edit Subscription</th> -->
 
             </tr>
@@ -52,6 +53,8 @@
               <td>{{subscription.quantity}}</td>
               <td>{{subscription.price}}</td>
               <td><button action="{% url 'edit_subscription' subscription.product.id %}" class="btn btn-primary" type="submit">Edit</button></td>
+              <td><button action="{% url 'edit_subscription' subscription.product.id %}" class="btn btn-primary" type="submit">Delete</button></td>
+
             </tr>
             {% endfor %}
           </tbody>
