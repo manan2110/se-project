@@ -46,7 +46,10 @@ class Subscription(models.Model):
 class Order(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
     address = models.JSONField(blank=True, null=True)
-    products = models.ManyToManyRel(to=Product, field=Product)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    subscription = models.ForeignKey(to=Subscription, on_delete=models.CASCADE)
-    shop = models.ForeignKey(to=Shop, on_delete=models.CASCADE)
+    subscriptions = models.ManyToManyField(to=Subscription)
+
+class Cart(models.Model):
+    subscriptions = models.ManyToManyField(to=Subscription)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    cart_value = models.FloatField(blank=True,null=True)
