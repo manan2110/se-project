@@ -92,6 +92,7 @@ def product_details(request, pk):
 
 def edit_subscription(request,pk):
     subscription = Subscription.objects.get(id=pk)
+    weeks = subscription.time_period["week_list"]
     product=subscription.product
     if request.method == "POST":
         weeks_list = [0 for i in range(7)]
@@ -118,7 +119,8 @@ def edit_subscription(request,pk):
         cart.save()
         return redirect("cart")
     context = {
-        "subscription":subscription
+        "subscription":subscription,
+        "weeks":weeks
     }
     return render(request,"api/edit_subscription.html",context) 
 

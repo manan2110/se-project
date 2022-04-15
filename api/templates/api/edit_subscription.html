@@ -68,7 +68,7 @@
                  
                 <div class="counter" >
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="0">
+                  <input id="mon" type="text" value="0" name="0">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div> 
               </div>   
@@ -81,7 +81,7 @@
                  
                 <div class="counter">
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="1">
+                  <input id="tues" type="text" value="0" name="1">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>
               </div>    
@@ -94,7 +94,7 @@
                  
                 <div class="counter">
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="2">
+                  <input id="wed" type="text" value="0" name="2">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>
               </div>
@@ -107,7 +107,7 @@
                  
                 <div class="counter"> 
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="3">
+                  <input id="thurs" type="text" value="0" name="3">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div> 
               </div>
@@ -120,7 +120,7 @@
                  
                 <div class="counter">   
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="4">
+                  <input id="fri" type="text" value="0" name="4">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>   
               </div>     
@@ -133,7 +133,7 @@
                  
                 <div class="counter">
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="5">
+                  <input  id="sat" type="text" value="0" name="5">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>
               </div>
@@ -146,7 +146,7 @@
                  
                 <div class="counter">  
                   <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                  <input type="text" value="0" name="6">
+                  <input id="sun" type="text" value="0" name="6">
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div> 
               </div>           
@@ -160,7 +160,7 @@
                 <!-- <label>Number of weeks</label> -->
                   <span class="down" onClick='decreaseweekCount(event, this)'>-</span>
 
-                  <input type="text" name="week_counter" value = "1" >
+                  <input id="weekcounter" type="text" name="week_counter" value = "1" >
                   <span class="up" onClick='increaseCount(event, this)'>+</span>
                 </div>
               
@@ -527,6 +527,15 @@ text-align: left;
 
 
 <script type="text/javascript">
+ document.getElementById("weekcounter").defaultValue = {{ subscription.number_of_weeks }};
+ document.getElementById("mon").defaultValue = {{ weeks.0 }};
+ document.getElementById("tues").defaultValue = {{ weeks.1  }};
+ document.getElementById("wed").defaultValue = {{ weeks.2  }};
+ document.getElementById("thurs").defaultValue = {{ weeks.3 }};
+ document.getElementById("fri").defaultValue = {{ weeks.4  }};
+ document.getElementById("sat").defaultValue = {{ weeks.5  }};
+ document.getElementById("sun").defaultValue = {{ weeks.6  }};
+
   function increaseCount(a, b) {
     var input = b.previousElementSibling;
     var value = parseInt(input.value, 10);
