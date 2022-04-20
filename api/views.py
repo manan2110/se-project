@@ -239,9 +239,14 @@ def checkout(request, pk):
     cart = Cart.objects.get(user=user)
     #     subscriptions.append(Subscription.objects.get(id=id))
     subscription = cart.subscriptions.all()
-    items = []
+    price = 0
     for x in subscription:
-        items.append(x.product)
-    print(items)
-    context = {"items": items, "subscriptions": cart.subscriptions.all()}
+        price += x.price
+    tax = 0.16 * price
+    total = price + tax
+    context = {"tax": tax, "total": total, "price": price}
     return render(request, "api/checkout.html", context)
+
+
+def placed(request):
+    return render(request, "api/order_placed.html")

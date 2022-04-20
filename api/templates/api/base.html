@@ -2862,6 +2862,54 @@
       position: absolute;
       pointer-events: none;
     }
+
+
+    .wrapper2110 {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eee
+    }
+
+    .animated-check {
+      height: 10em;
+      width: 10em
+    }
+
+    .animated-check path {
+      fill: none;
+      stroke: #7ac142;
+      stroke-width: 4;
+      stroke-dasharray: 23;
+      stroke-dashoffset: 23;
+      animation: draw 1s linear forwards;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0
+      }
+    }
+
+    #popup-1 {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .popup-content {
+      position: relative;
+      padding: 20px;
+      margin: 0 auto;
+      background-color: white;
+      width: 400px;
+      top: 5vh;
+    }
   </style>
   <script
     src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/834785397/?random=1646904432714&amp;cv=9&amp;fst=1646904432714&amp;num=1&amp;bg=ffffff&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;u_h=864&amp;u_w=1536&amp;u_ah=824&amp;u_aw=1536&amp;u_cd=24&amp;u_his=5&amp;u_tz=330&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;gtm=2wg370&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=https%3A%2F%2Fcountrydelight.in%2F&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;tiba=Country%20Delight%20-%20Farm-fresh%20Milk%2C%20Delhi-NCR%2C%20Bangalore%2C%20Mumbai%2C%20Pune&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script>
@@ -2869,6 +2917,8 @@
     src="https://maps.googleapis.com/maps-api-v3/api/js/48/4/common.js"></script>
   <script type="text/javascript" charset="UTF-8"
     src="https://maps.googleapis.com/maps-api-v3/api/js/48/4/util.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"></script>
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1052.0" data-gr-ext-installed="">
@@ -2904,32 +2954,32 @@
           </div>
           <span class="nav-spacer"></span>
           <div class="cd-topnav-right" fxhide.lt-md="">
-            
+
             {% if request.user.is_authenticated %}
-            
+
             <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
               <a href="{% url 'cart' %}" style="text-decoration: none;">
                 <span class="cd-ques">Cart</span>
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-              <span class="cd-ques">Hello {{ request.user }} </span>
-              <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                <a href="{% url 'logout' %}" style="text-decoration: none;">
-                  <span class="cd-ques">Logout</span>
-                </a>
-                {% else %}
+                <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+                  <span class="cd-ques">Hello {{ request.user }} </span>
+                  <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+                    <a href="{% url 'logout' %}" style="text-decoration: none;">
+                      <span class="cd-ques">Logout</span>
+                    </a>
+                    {% else %}
 
-                <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                  <a href="{% url 'login' %}" style="text-decoration: none;">
-                    <span class="cd-ques">Existing user?</span>
-                    <span class="login">Login here</span></span>
-                </a>
-                <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
-                  <a href="{% url 'signup' %}" style="text-decoration: none;">
-                    <span class="cd-ques">New user?</span>
-                    <span class="login">Signup here</span></span>
-                </a>
-                {% endif %}
+                    <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+                      <a href="{% url 'login' %}" style="text-decoration: none;">
+                        <span class="cd-ques">Existing user?</span>
+                        <span class="login">Login here</span></span>
+              </a>
+              <span class="cd-topnav-headers pd-left-18" routerlinkactive="active-link" tabindex="0">
+                <a href="{% url 'signup' %}" style="text-decoration: none;">
+                  <span class="cd-ques">New user?</span>
+                  <span class="login">Signup here</span></span>
+              </a>
+              {% endif %}
 
           </div>
           <div class="cd-topnav-right-mob" fxhide="" fxlayout="row" fxshow.lt-md="" style="
@@ -3622,8 +3672,23 @@
     fbq("init", "692546534605339");
     fbq("track", "PageView");
   </script>
+  <script>
+    var popup1 = document.getElementById("popup-1")
+    var openPopup1 = document.getElementById("open-popup-1")
+    var closePopup1 = document.getElementById('close-popup-1')
+
+    openPopup1.addEventListener('click', () => {
+      popup1.style.display = "block";
+    })
+
+    closePopup1.addEventListener('click', () => {
+      popup1.style.display = "none";
+    })
+
+  </script>
   <noscript><img height="1" width="1" style="display: none"
       src="https://www.facebook.com/tr?id=303674290539633&amp;ev=PageView&amp;noscript=1" /></noscript>
+
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
