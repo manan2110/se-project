@@ -27,8 +27,9 @@ Our application will digitize the delivery of daily essential products. The scop
     - The distributor will be notified about the change such that they get sufficient time to fulfill the requirements.
 - **Proper Record:**
     - A record of the delivery of services will be maintained for both the customer and distributor in this application.
-- **Chat Feature:**
-    - The customer and the distributor can interact with each other through this chat feature.
+- **ChatBot Feature:**
+    - The bot will help the users to add and modify their subscriptions.
+
 
 
 ### Advantages of Customers:
@@ -52,7 +53,6 @@ Our application will digitize the delivery of daily essential products. The scop
 - Customers will have full liberty to manage the services that they have subscribed to.
 - Customers can add/delete/edit any service they have opted for.
 - Payment for these services will be done via this application.
-- Customers can also rate and comment on delivery processes and products.
 
 
 ### Non-functional requirements:
