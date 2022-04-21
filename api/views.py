@@ -174,6 +174,8 @@ def logoutUser(request):
     logout(request)
     return redirect("login")
 
+def is_member(user):
+    return user.groups.filter(name='Seller').exists()
 
 def view_login(request):
     if request.user.is_authenticated:
@@ -186,6 +188,8 @@ def view_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                if is_member(user) or user.is_superuser:
+                    return redirect("/admin")
                 return redirect("/")
             else:
                 messages.info(request, "Username OR password is incorrect")
