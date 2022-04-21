@@ -234,7 +234,7 @@ def delete_from_cart(request, pk):
 
 
 @login_required(login_url="login")
-def checkout(request, pk):
+def checkout(request):
     user = request.user
     cart = Cart.objects.get(user=user)
     #     subscriptions.append(Subscription.objects.get(id=id))
@@ -244,6 +244,19 @@ def checkout(request, pk):
         price += x.price
     tax = 0.16 * price
     total = price + tax
+    if request.method == "POST":
+        address = {}
+        for key, value in request.POST.items():
+            if key != "csrfmiddlewaretoken":
+                address[key]=value
+        print(address)
+        order = Order.objects.create(address=address,user=request.user)
+        subscriptions = cart.subscriptions
+        order.subscriptions.set(cart.subscriptions.all())
+        order.save()
+        cart.subscriptions.clear()
+        cart.save()
+        return redirect("placed")
     context = {"tax": tax, "total": total, "price": price}
     return render(request, "api/checkout.html", context)
 
