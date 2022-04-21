@@ -37,7 +37,7 @@ def buyer_dashboard(request):
         ]
         index = [0, 1, 2, 3, 4, 5, 6]
         user = request.user
-        subscriptions = Subscription.objects.filter(user=user.id)
+        subscriptions = Subscription.objects.filter(user=user.id).filter(has_ordered=True)
         shops = Shop.objects.all()
         context = {
             "subscriptions": subscriptions,
@@ -251,9 +251,12 @@ def checkout(request):
                 address[key]=value
         print(address)
         order = Order.objects.create(address=address,user=request.user)
-        subscriptions = cart.subscriptions
+        subscriptions = cart.subscriptions.all()
         order.subscriptions.set(cart.subscriptions.all())
         order.save()
+        for subscription in subscriptions:
+            subscription.has_ordered = True
+            subscription.save()
         cart.subscriptions.clear()
         cart.save()
         return redirect("placed")
