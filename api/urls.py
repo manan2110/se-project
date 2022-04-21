@@ -18,6 +18,6 @@ urlpatterns = [
     path("shops/", views.get_all_shops, name="all_shops"),
     path("cart", views.get_cart, name="cart"),
     path("delete-from-cart/<str:pk>", views.delete_from_cart, name="delete_from_cart"),
-    path("checkout/<str:pk>", views.checkout, name="checkout"),
-    path("placed", views.placed),
+    path("checkout", views.checkout, name="checkout"),
+    path("placed", views.placed,name="placed"),
 ]

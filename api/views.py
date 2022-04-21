@@ -37,7 +37,7 @@ def buyer_dashboard(request):
         ]
         index = [0, 1, 2, 3, 4, 5, 6]
         user = request.user
-        subscriptions = Subscription.objects.filter(user=user.id)
+        subscriptions = Subscription.objects.filter(user=user.id).filter(has_ordered=True)
         shops = Shop.objects.all()
         context = {
             "subscriptions": subscriptions,
@@ -234,7 +234,7 @@ def delete_from_cart(request, pk):
 
 
 @login_required(login_url="login")
-def checkout(request, pk):
+def checkout(request):
     user = request.user
     cart = Cart.objects.get(user=user)
     #     subscriptions.append(Subscription.objects.get(id=id))
@@ -244,6 +244,22 @@ def checkout(request, pk):
         price += x.price
     tax = 0.16 * price
     total = price + tax
+    if request.method == "POST":
+        address = {}
+        for key, value in request.POST.items():
+            if key != "csrfmiddlewaretoken":
+                address[key]=value
+        print(address)
+        order = Order.objects.create(address=address,user=request.user)
+        subscriptions = cart.subscriptions.all()
+        order.subscriptions.set(cart.subscriptions.all())
+        order.save()
+        for subscription in subscriptions:
+            subscription.has_ordered = True
+            subscription.save()
+        cart.subscriptions.clear()
+        cart.save()
+        return redirect("placed")
     context = {"tax": tax, "total": total, "price": price}
     return render(request, "api/checkout.html", context)
 
