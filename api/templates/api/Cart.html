@@ -19,10 +19,12 @@
   <div class="card-body" style="background-color: #e9ecef;">
     <table class="table table-hover" style="background-color: #e9ecef;">
 
+      {% if subscriptions %}
       <h2 class="card-title" style="position: absolute; left: 40px; margin-top: 12px;">Cart</h2>
       <!-- <a href=""  rel="noopener noreferrer"
         style="position: absolute; right: 20px; margin-top: 15px; margin-right : 46px " type="button"
         class="btn btn-light ">View All</a> -->
+        
       <div class="card-body" style="background-color: #e9ecef;">
         <table class="table table-hover" style="background-color: #e9ecef;">
           <thead>
@@ -70,9 +72,13 @@
         <div class="card-footer bg-light">
           <!-- <small class="text-white ">Last 5 Devices</small> -->
           Total Amount : {{ total_amount }}
-          {% if subscriptions %}
-          <button type="button" class="btn btn-success" style="float: right; margin-top: -6px;"><a
+    
+          <button type="menu" class="btn btn-success" style="float: right; margin-top: -6px;"><a
               href="{% url 'checkout' %}" style="text-decoration: none; color: #e9ecef;">Checkout</a></button>
+    
+              {% else %}
+              <h4 class="card-title" style="position: absolute; left: 45%; right: 45%; margin-top: 12px;">Empty Cart</h4>
+
               {% endif %}
         </div>
       </div>
